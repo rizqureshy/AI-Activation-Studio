@@ -3685,3 +3685,294 @@ body::before, body::after { content: none; }
   .wizard-footer .btn { width: 100%; }
   .modal { padding: 28px 22px; }
 }
+
+/* ════════════════════════════════════════════════════════════════
+   SPLASH INTRO — "Welcome to the future of AI Activation"
+   Once per session. Gated pre-paint by an inline <head> script that
+   sets <html data-splash="pending">; choreographed by js/splash.js.
+   ════════════════════════════════════════════════════════════════ */
+
+#splash { display: none; }
+html[data-splash] #splash { display: flex; }
+html[data-splash="pending"] { overflow: hidden; }
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 500; /* above modals + toasts */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Always dark — a cinematic brand moment regardless of theme */
+  background:
+    radial-gradient(ellipse 120% 90% at 50% 110%, #14102E 0%, #0A0B1A 45%, #06070F 100%);
+}
+
+/* ── Backdrop layers ── */
+.splash-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.splash.play .splash-stars {
+  animation: splash-stars-in 1.6s var(--easing-out) 0.05s forwards,
+             twinkle 5s ease-in-out 1.7s infinite;
+}
+@keyframes splash-stars-in { to { opacity: 0.9; } }
+
+.splash-aurora {
+  position: absolute;
+  bottom: -30vh;
+  left: 50%;
+  width: 190vw;
+  height: 95vh;
+  transform: translateX(-50%) scale(0.7);
+  transform-origin: 50% 100%;
+  background: radial-gradient(
+    ellipse 50% 100% at 50% 30%,
+    rgba(167, 139, 250, 0.80),
+    rgba(139, 92, 246, 0.45) 18%,
+    rgba(124, 58, 237, 0.25) 34%,
+    rgba(76, 29, 149, 0.12) 52%,
+    transparent 75%
+  );
+  filter: blur(60px);
+  opacity: 0;
+}
+.splash.play .splash-aurora { animation: splash-aurora-in 2s var(--easing-out) 0.15s forwards; }
+@keyframes splash-aurora-in { to { opacity: 1; transform: translateX(-50%) scale(1); } }
+
+.splash-horizon {
+  position: absolute;
+  left: 50%;
+  top: 86vh;
+  width: 340vw;
+  aspect-ratio: 1 / 1;
+  transform: translateX(-50%) translateY(90px);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(30, 22, 70, 0.9), rgba(15, 10, 35, 0.96) 30%, #050610 60%);
+  box-shadow:
+    0 -12px 60px rgba(167, 139, 250, 0.55),
+    0 -2px 0 rgba(255, 255, 255, 0.30);
+  opacity: 0;
+}
+.splash.play .splash-horizon { animation: splash-horizon-rise 1.8s var(--easing-out) 0.25s forwards; }
+@keyframes splash-horizon-rise {
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ── Center stage ── */
+.splash-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+  transition: transform 0.75s var(--easing-in), filter 0.75s var(--easing-in), opacity 0.75s var(--easing-in);
+}
+
+/* Brand mark + radiating rings */
+.splash-mark {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 40px;
+}
+.splash-logo {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: var(--grad-primary);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 16px 50px rgba(167, 139, 250, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transform: scale(0.3);
+}
+.splash-logo::before {
+  content: "";
+  width: 36px;
+  height: 36px;
+  border: 4px solid white;
+  border-radius: 8px;
+  transform: rotate(45deg);
+}
+.splash.play .splash-logo { animation: splash-logo-in 0.9s var(--easing-spring) 0.4s forwards; }
+@keyframes splash-logo-in {
+  0%   { opacity: 0; transform: scale(0.3); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.splash-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(167, 139, 250, 0.55);
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
+}
+.splash.play .splash-ring { animation: splash-ring-pulse 2.6s var(--easing-out) infinite; }
+.splash.play .splash-ring.r1 { animation-delay: 0.7s; }
+.splash.play .splash-ring.r2 { animation-delay: 1.3s; }
+.splash.play .splash-ring.r3 { animation-delay: 1.9s; }
+@keyframes splash-ring-pulse {
+  0%   { opacity: 0;    transform: scale(0.55); }
+  18%  { opacity: 0.85; }
+  100% { opacity: 0;    transform: scale(2.4); }
+}
+
+/* Kicker — "Welcome to the future of" */
+.splash-kicker {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1.4vw, 14px);
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+/* Headline — "AI Activation" */
+.splash-title {
+  position: relative;
+  font-size: clamp(44px, 9vw, 104px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  margin: 0 0 28px;
+}
+.splash-title .splash-ch {
+  /* Vertical gradient per character reads as one seamless gradient */
+  background: linear-gradient(180deg, #FFFFFF 0%, #EDE8FF 45%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* Shimmer sweep across the headline once the letters have landed */
+.splash-title::after {
+  content: "";
+  position: absolute;
+  inset: -10% -5%;
+  background: linear-gradient(110deg, transparent 42%, rgba(255, 255, 255, 0.55) 50%, transparent 58%);
+  background-size: 280% 100%;
+  background-position: 120% 0;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0;
+}
+.splash.play .splash-title::after { animation: splash-sheen 1.3s var(--easing) 2.5s forwards; }
+@keyframes splash-sheen {
+  0%   { opacity: 1; background-position: 120% 0; }
+  100% { opacity: 0; background-position: -60% 0; }
+}
+
+/* Letter-by-letter reveal (delays set inline by js/splash.js) */
+.splash-word { display: inline-block; white-space: nowrap; }
+.splash-ch {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(10px);
+}
+.splash.play .splash-ch { animation: splash-ch-in 0.75s var(--easing-out) both; }
+@keyframes splash-ch-in {
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Divider + sub line */
+.splash-divider {
+  width: 160px;
+  height: 1px;
+  margin: 0 auto 16px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  transform: scaleX(0);
+}
+.splash.play .splash-divider { animation: splash-divider-in 0.9s var(--easing-out) 2.45s forwards; }
+@keyframes splash-divider-in { to { transform: scaleX(1); } }
+
+.splash-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  opacity: 0;
+  transform: translateY(10px);
+}
+.splash.play .splash-sub { animation: splash-fade-up 0.8s var(--easing-out) 2.7s forwards; }
+.splash-sub .live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes splash-fade-up { to { opacity: 1; transform: translateY(0); } }
+
+/* ── Progress bar + skip hint ── */
+.splash-progress {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(36px, 7vh, 64px);
+  transform: translateX(-50%);
+  width: min(320px, 60vw);
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.10);
+  overflow: hidden;
+  z-index: 2;
+}
+.splash-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: var(--grad-primary);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+.splash.play .splash-progress span { animation: splash-progress-fill 3.9s cubic-bezier(0.3, 0, 0.4, 1) 0.3s forwards; }
+@keyframes splash-progress-fill { to { width: 100%; } }
+
+.splash-skip {
+  position: absolute;
+  right: 28px;
+  bottom: 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  opacity: 0;
+  z-index: 2;
+}
+.splash.play .splash-skip { animation: splash-skip-in 1s var(--easing) 1.9s forwards; }
+@keyframes splash-skip-in { to { opacity: 0.7; } }
+
+/* ── Exit — content lifts and blurs, overlay dissolves ── */
+.splash.exit {
+  opacity: 0;
+  transition: opacity 0.75s var(--easing-in);
+  pointer-events: none;
+}
+.splash.exit .splash-inner {
+  transform: scale(1.08) translateY(-12px);
+  filter: blur(8px);
+  opacity: 0;
+}
+
+@media (max-width: 720px) {
+  .splash-kicker { letter-spacing: 0.28em; }
+  .splash-mark { width: 72px; height: 72px; margin-bottom: 32px; }
+  .splash-logo { border-radius: 18px; }
+  .splash-logo::before { width: 30px; height: 30px; border-width: 3px; }
+  .splash-skip { right: 20px; bottom: 18px; }
+}
