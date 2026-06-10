@@ -1,0 +1,172 @@
+/* ════════════════════════════════════════════════════════════════
+   AI Trainer Hub — Corporate Dark design tokens
+   Deep navy base · vibrant violet accent · bracket labels · glass
+   Modeled on the reference template — dark-first
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Surfaces — DARK FIRST. Light mode is opt-in. */
+  --bg:               #0A0B1A;
+  --bg-deep:          #06070F;
+  --surface:          #12132A;
+  --surface-alt:      #181A33;
+  --surface-elev:     #1C1E3D;
+  --surface-glass:    rgba(28, 30, 61, 0.55);
+  --paper:            #0F1024;
+
+  /* Text */
+  --text:             #F4F4F8;
+  --text-strong:      #FFFFFF;
+  --text-muted:       #9CA0BC;
+  --text-soft:        #5F6489;
+  --text-inverse:     #0A0B1A;
+
+  /* Borders */
+  --border:           #232544;
+  --border-strong:    #2F3260;
+  --border-subtle:    #1A1C36;
+  --border-glow:      rgba(167, 139, 250, 0.30);
+  --border-ink:       #F4F4F8;
+
+  /* Accent — vibrant violet */
+  --accent:           #A78BFA;
+  --accent-hover:     #C4B5FD;
+  --accent-deep:      #8B5CF6;
+  --accent-soft:      rgba(167, 139, 250, 0.12);
+  --accent-glow:      rgba(167, 139, 250, 0.45);
+  --accent-tint:      #1E1B45;
+  --accent-text:      #C7B9FF;
+
+  /* Secondary accents */
+  --violet:           #A78BFA;
+  --violet-soft:      rgba(167, 139, 250, 0.16);
+  --magenta:          #E879F9;
+  --magenta-soft:     rgba(232, 121, 249, 0.16);
+  --sky:              #60A5FA;
+  --sky-soft:         rgba(96, 165, 250, 0.16);
+  --emerald:          #34D399;
+  --emerald-soft:     rgba(52, 211, 153, 0.16);
+  --amber:            #FBBF24;
+  --amber-soft:       rgba(251, 191, 36, 0.16);
+  --pink:             #F472B6;
+  --pink-soft:        rgba(244, 114, 182, 0.16);
+
+  /* Gradients — the signature look */
+  --grad-primary:     linear-gradient(135deg, #8B5CF6 0%, #A78BFA 50%, #C4B5FD 100%);
+  --grad-violet:      linear-gradient(135deg, #6D28D9 0%, #A78BFA 100%);
+  --grad-magenta:     linear-gradient(135deg, #A78BFA 0%, #E879F9 100%);
+  --grad-cool:        linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+  --grad-warm:        linear-gradient(135deg, #A78BFA 0%, #F472B6 100%);
+  --grad-conic:       conic-gradient(from 180deg at 50% 50%, #A78BFA, #E879F9, #60A5FA, #A78BFA);
+  --grad-glow:        radial-gradient(circle at 50% 0%, rgba(167, 139, 250, 0.20), transparent 60%);
+  --grad-card:        linear-gradient(180deg, rgba(167, 139, 250, 0.04) 0%, transparent 50%);
+
+  /* Semantic */
+  --success:          #34D399;
+  --success-soft:     rgba(52, 211, 153, 0.14);
+  --warning:          #FBBF24;
+  --warning-soft:     rgba(251, 191, 36, 0.14);
+  --danger:           #F87171;
+  --danger-soft:      rgba(248, 113, 113, 0.14);
+
+  /* Shadows — designed for dark depth */
+  --shadow-xs:        0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-sm:        0 2px 4px rgba(0, 0, 0, 0.30), 0 1px 2px rgba(0, 0, 0, 0.40);
+  --shadow-md:        0 4px 8px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-lg:        0 12px 24px rgba(0, 0, 0, 0.45), 0 6px 12px rgba(0, 0, 0, 0.30);
+  --shadow-xl:        0 24px 48px rgba(0, 0, 0, 0.55), 0 12px 24px rgba(0, 0, 0, 0.35);
+  --shadow-2xl:       0 40px 80px rgba(0, 0, 0, 0.70);
+  --shadow-accent:    0 12px 40px -8px rgba(167, 139, 250, 0.45);
+  --shadow-accent-lg: 0 24px 60px -12px rgba(167, 139, 250, 0.55);
+  --shadow-glow:      0 0 0 3px var(--accent-soft), 0 0 28px var(--accent-glow);
+
+  /* Type */
+  --font-sans:        "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono:        "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Radius */
+  --radius-xs:        4px;
+  --radius-sm:        6px;
+  --radius:           10px;
+  --radius-lg:        16px;
+  --radius-xl:        20px;
+  --radius-2xl:       28px;
+  --radius-3xl:       36px;
+  --radius-pill:      9999px;
+
+  /* Motion */
+  --easing:           cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-out:       cubic-bezier(0.16, 1, 0.3, 1);
+  --easing-in:        cubic-bezier(0.4, 0, 1, 1);
+  --easing-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);
+  --easing-elastic:   cubic-bezier(0.68, -0.4, 0.32, 1.4);
+
+  /* Z-index */
+  --z-base:           1;
+  --z-overlay:        50;
+  --z-nav:            80;
+  --z-modal:          200;
+  --z-toast:          300;
+}
+
+/* Opt-in light mode — sunrise palette */
+[data-theme="light"] {
+  --bg:               #FFF8F0;
+  --bg-deep:          #FBEFDC;
+  --surface:          #FFFFFF;
+  --surface-alt:      #FDF6EC;
+  --surface-elev:     #FFFFFF;
+  --surface-glass:    rgba(255, 255, 255, 0.75);
+  --paper:            #FFFCF6;
+
+  --text:             #0A0B1A;
+  --text-strong:      #000000;
+  --text-muted:       #475569;
+  --text-soft:        #94A3B8;
+  --text-inverse:     #FFFFFF;
+
+  --border:           #E2E8F0;
+  --border-strong:    #CBD5E1;
+  --border-subtle:    #F1F5F9;
+  --border-glow:      rgba(124, 58, 237, 0.30);
+  --border-ink:       #0A0B1A;
+
+  --accent:           #7C3AED;
+  --accent-hover:     #6D28D9;
+  --accent-deep:      #5B21B6;
+  --accent-soft:      rgba(124, 58, 237, 0.10);
+  --accent-glow:      rgba(124, 58, 237, 0.35);
+  --accent-tint:      #F3EFFF;
+  --accent-text:      #6D28D9;
+
+  --violet:           #7C3AED;
+  --violet-soft:      rgba(124, 58, 237, 0.10);
+  --magenta:          #D946EF;
+  --magenta-soft:     rgba(217, 70, 239, 0.10);
+  --sky:              #0EA5E9;
+  --sky-soft:         rgba(14, 165, 233, 0.10);
+  --emerald:          #10B981;
+  --emerald-soft:     rgba(16, 185, 129, 0.10);
+  --amber:            #F59E0B;
+  --amber-soft:       rgba(245, 158, 11, 0.10);
+  --pink:             #EC4899;
+  --pink-soft:        rgba(236, 72, 153, 0.10);
+
+  --grad-primary:     linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+  --grad-violet:      linear-gradient(135deg, #5B21B6 0%, #7C3AED 100%);
+  --grad-magenta:     linear-gradient(135deg, #7C3AED 0%, #D946EF 100%);
+  --grad-cool:        linear-gradient(135deg, #0EA5E9 0%, #7C3AED 100%);
+  --grad-warm:        linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+  --grad-conic:       conic-gradient(from 180deg at 50% 50%, #7C3AED, #D946EF, #0EA5E9, #7C3AED);
+  --grad-glow:        radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.10), transparent 60%);
+  --grad-card:        linear-gradient(180deg, rgba(124, 58, 237, 0.03) 0%, transparent 50%);
+
+  --shadow-xs:        0 1px 2px rgba(10, 11, 26, 0.05);
+  --shadow-sm:        0 1px 3px rgba(10, 11, 26, 0.08), 0 1px 2px rgba(10, 11, 26, 0.04);
+  --shadow-md:        0 4px 8px rgba(10, 11, 26, 0.08), 0 2px 4px rgba(10, 11, 26, 0.04);
+  --shadow-lg:        0 12px 24px rgba(10, 11, 26, 0.10), 0 6px 12px rgba(10, 11, 26, 0.05);
+  --shadow-xl:        0 24px 48px rgba(10, 11, 26, 0.14), 0 12px 24px rgba(10, 11, 26, 0.08);
+  --shadow-2xl:       0 40px 80px rgba(10, 11, 26, 0.20);
+  --shadow-accent:    0 12px 40px -8px rgba(124, 58, 237, 0.35);
+  --shadow-accent-lg: 0 24px 60px -12px rgba(124, 58, 237, 0.45);
+}

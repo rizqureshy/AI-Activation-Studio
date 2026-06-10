@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Activation Studio</title>
+  <meta name="description" content="AI Activation Studio — design and ship AI training programs.">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ───── Cinematic horizon scene (fixed background) ───── -->
+<div class="scene" aria-hidden="true">
+  <div class="scene-stars"></div>
+  <div class="scene-atmosphere"></div>
+  <div class="scene-horizon"></div>
+  <div class="scene-vignette"></div>
+</div>
+
+<!-- Floating back button — visible on every page except landing -->
+<button id="back-btn" class="back-btn" onclick="goBack()" aria-label="Go back" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+    <path d="M19 12H5"/>
+    <path d="m12 19-7-7 7-7"/>
+  </svg>
+  <span>Back</span>
+</button>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand" onclick="showPage('landing')">
+      <div class="brand-mark"></div>
+      <span>AI Activation Studio</span>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═════════════ LANDING ═════════════ -->
+<main id="page-landing" class="page active">
+
+  <!-- WORKSPACE -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="studio-head">
+        <div class="hero-bracket bracket"><span class="live-dot"></span>Studio · v1.0</div>
+        <div class="studio-ask">Where would you like to start?</div>
+        <button id="my-plans-link" class="my-plans-chip" onclick="openPlansModal()" style="display:none;" title="My saved plans">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span id="my-plans-count">0 saved plans</span>
+        </button>
+      </div>
+
+      <h1 class="studio-h">AI Activation <span class="grad">Studio</span></h1>
+
+      <div id="resume-banner" class="resume-banner" style="display:none"></div>
+
+      <!-- PRIMARY PATHS -->
+      <div class="path-grid">
+
+        <button class="path" onclick="openPreferences()">
+          <div class="path-head">
+            <div class="path-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                <circle cx="12" cy="12" r="4"/>
+              </svg>
+            </div>
+            <div class="path-tag">Recommended</div>
+          </div>
+          <h3 class="path-title">Guided AI Program Building</h3>
+          <p class="path-sub">Answer five quick questions about your team. We'll auto-pick the format, tracks, and activities that match.</p>
+          <ul class="path-feats">
+            <li>Tailored to your focus area</li>
+            <li>Matches your time commitment</li>
+            <li>Skill-level appropriate</li>
+            <li>Editable after — never locked in</li>
+          </ul>
+          <div class="path-cta">Start with preferences <span class="arrow">→</span></div>
+        </button>
+
+        <button class="path" onclick="startBuilder()">
+          <div class="path-head">
+            <div class="path-icon violet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 7h16M4 12h10M4 17h7"/>
+                <circle cx="19" cy="17" r="3"/>
+              </svg>
+            </div>
+            <div class="path-tag">Full Control</div>
+          </div>
+          <h3 class="path-title">Custom Build · From Scratch</h3>
+          <p class="path-sub">Full step-by-step wizard. You pick the format, every track, every activity. Maximum customization.</p>
+          <ul class="path-feats">
+            <li>5-step guided workflow</li>
+            <li>108 activities to choose from</li>
+            <li>Hand-pick or auto-fill</li>
+            <li>Add custom activities anytime</li>
+          </ul>
+          <div class="path-cta">Open the builder <span class="arrow">→</span></div>
+        </button>
+
+        <button class="path" onclick="openLaunchKit()">
+          <div class="path-head">
+            <div class="path-icon emerald">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+              </svg>
+            </div>
+            <div class="path-tag">Operational</div>
+          </div>
+          <h3 class="path-title">Launch and Run Self Enablement Playbook</h3>
+          <p class="path-sub">Everything you need to deploy and operate the program. Real-world examples, comms templates, hard-won principles.</p>
+          <ul class="path-feats">
+            <li>7-step deployment checklist</li>
+            <li>Real-world AI April examples</li>
+            <li>Comms templates embedded</li>
+            <li>9 operating principles</li>
+          </ul>
+          <div class="path-cta">Open the playbook <span class="arrow">→</span></div>
+        </button>
+
+        <button class="path" onclick="openCatHub()">
+          <div class="path-head">
+            <div class="path-icon amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                <path d="M6 8h2M6 12h2M16 8h2M16 12h2"/>
+              </svg>
+            </div>
+            <div class="path-tag">Self-Explore</div>
+          </div>
+          <h3 class="path-title">Activities &amp; Learnings Catalog</h3>
+          <p class="path-sub">Browse every activity and every learning resource. Click any line to expand the full detail — instructions, providers, links, skills built.</p>
+          <ul class="path-feats">
+            <li>108 hands-on activities</li>
+            <li>66 vetted external resources</li>
+            <li>Filter by track, difficulty, type</li>
+            <li>Click any line to expand</li>
+          </ul>
+          <div class="path-cta">Open the catalog <span class="arrow">→</span></div>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-bot">
+        <span class="bracket muted">AI Activation Studio · v1.0</span>
+        <span style="opacity:0.5">·</span>
+        <a onclick="openLaunchKit()">Deployment</a>
+        <a onclick="openTemplates()">Comms</a>
+        <a onclick="openPlaybook()">Playbook</a>
+        <a onclick="openCatalog()">Catalog</a>
+        <span style="opacity:0.5">·</span>
+        <span class="bracket muted">No backend · your data stays with you</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- ═════════════ OTHER PAGES ═════════════ -->
+<main id="page-launch-kit" class="page"><div id="launch-kit-root"></div></main>
+<main id="page-checklist"  class="page"><div id="checklist-root"></div></main>
+<main id="page-cat-hub"    class="page"><div id="cat-hub-root"></div></main>
+<main id="page-activities" class="page"><div id="activities-root"></div></main>
+<main id="page-learnings"  class="page"><div id="learnings-root"></div></main>
+<main id="page-playbook"   class="page"><div id="playbook-root"></div></main>
+<main id="page-templates"  class="page"><div id="templates-root"></div></main>
+<main id="page-catalog"    class="page"><div id="catalog-root"></div></main>
+
+<main id="page-builder" class="page">
+  <div class="wizard">
+    <div class="wizard-progress" id="wizard-progress"></div>
+    <div id="pane-1" class="step-pane"></div>
+    <div id="pane-2" class="step-pane"></div>
+    <div id="pane-3" class="step-pane"></div>
+    <div id="pane-4" class="step-pane"></div>
+    <div id="pane-5" class="step-pane"></div>
+  </div>
+</main>
+
+<!-- Modals -->
+<div id="activity-modal" class="modal-backdrop" onclick="if(event.target.id==='activity-modal') closeModal()" role="dialog" aria-modal="true"></div>
+<div id="prefs-modal" class="modal-backdrop" onclick="if(event.target.id==='prefs-modal') closePreferences()" role="dialog" aria-modal="true"></div>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
+
+<!-- Data -->
+<script src="js/tracks.js"></script>
+<script src="js/formats.js"></script>
+<script src="js/activities.js"></script>
+<script src="js/catalog.js"></script>
+
+<!-- Logic -->
+<script src="js/program-template.js"></script>
+<script src="js/app.js"></script>
+<script src="js/preferences.js"></script>
+<script src="js/builder.js"></script>
+<script src="js/preview.js"></script>
+<script src="js/catalog-ui.js"></script>
+<script src="js/cat-hub.js"></script>
+<script src="js/plans.js"></script>
+<script src="js/launch-kit.js"></script>
+<script src="js/playbook.js"></script>
+<script src="js/templates-ui.js"></script>
+<script src="js/export.js"></script>
+
+</body>
+</html>
