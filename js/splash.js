@@ -6,7 +6,7 @@
 
 (function () {
   const SPLASH_KEY = 'aas-splash-seen';
-  const TOTAL_MS   = 9400;   // presents card + 3·2·1 leader + title card
+  const TOTAL_MS   = 9600;   // day cycle (~5.6s) + finale, then auto-dismiss
   const EXIT_MS    = 750;    // exit transition length (matches CSS)
 
   const root = document.documentElement;
@@ -37,9 +37,9 @@
 
     markSeen();
     buildStars(splash.querySelector('.splash-stars'));
-    // Title-card text lands after the countdown leader cuts (flash at 5.62s)
-    splitLetters(splash.querySelector('.splash-kicker'), 6.1, 0.045);
-    splitLetters(splash.querySelector('.splash-title'), 6.55, 0.05);
+    // Finale text lands after the day cycle (Plan/Build/Execute) completes
+    splitLetters(splash.querySelector('.splash-kicker'), 6.2, 0.045);
+    splitLetters(splash.querySelector('.splash-title'), 6.7, 0.05);
 
     let exited = false;
     let autoTimer;
@@ -53,13 +53,12 @@
       setTimeout(removeSplash, EXIT_MS);
     }
 
-    // Start the choreography on the next frame so transitions register.
-    // The auto-dismiss timer starts here too, so it stays in sync with
-    // the animation timeline however long first paint takes.
+    // Start the choreography on the next frame so transitions register
     requestAnimationFrame(() => requestAnimationFrame(() => {
       splash.classList.add('play');
-      autoTimer = setTimeout(exit, TOTAL_MS);
     }));
+
+    autoTimer = setTimeout(exit, TOTAL_MS);
     splash.addEventListener('click', exit);
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') exit();
