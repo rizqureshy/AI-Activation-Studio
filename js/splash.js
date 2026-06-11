@@ -6,7 +6,7 @@
 
 (function () {
   const SPLASH_KEY = 'aas-splash-seen';
-  const TOTAL_MS   = 4400;   // auto-dismiss after the full sequence
+  const TOTAL_MS   = 9600;   // day cycle (~5.6s) + finale, then auto-dismiss
   const EXIT_MS    = 750;    // exit transition length (matches CSS)
 
   const root = document.documentElement;
@@ -37,8 +37,9 @@
 
     markSeen();
     buildStars(splash.querySelector('.splash-stars'));
-    splitLetters(splash.querySelector('.splash-kicker'), 0.95, 0.045);
-    splitLetters(splash.querySelector('.splash-title'), 1.55, 0.05);
+    // Finale text lands after the day cycle (Plan/Build/Execute) completes
+    splitLetters(splash.querySelector('.splash-kicker'), 6.2, 0.045);
+    splitLetters(splash.querySelector('.splash-title'), 6.7, 0.05);
 
     let exited = false;
     let autoTimer;

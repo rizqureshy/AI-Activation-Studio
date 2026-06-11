@@ -3711,17 +3711,158 @@ html[data-splash="pending"] { overflow: hidden; }
     radial-gradient(ellipse 120% 90% at 50% 110%, #14102E 0%, #0A0B1A 45%, #06070F 100%);
 }
 
-/* ── Backdrop layers ── */
+/* ── Backdrop layers — a full day cycle: dawn → dusk → night ── */
+.splash-sky-dawn,
+.splash-sky-dusk {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.splash-sky-dawn {
+  background:
+    radial-gradient(ellipse 95% 70% at 50% 102%,
+      rgba(251, 146, 60, 0.60),
+      rgba(252, 211, 77, 0.30) 32%,
+      rgba(254, 243, 199, 0.10) 52%,
+      rgba(96, 130, 200, 0.06) 70%,
+      transparent 82%);
+}
+.splash-sky-dusk {
+  background:
+    radial-gradient(ellipse 105% 75% at 50% 102%,
+      rgba(225, 69, 126, 0.55),
+      rgba(190, 24, 93, 0.32) 32%,
+      rgba(124, 45, 110, 0.16) 56%,
+      transparent 80%);
+}
+.splash.play .splash-sky-dawn { animation: splash-sky-phase 4.6s var(--easing) 0.3s both; }
+.splash.play .splash-sky-dusk { animation: splash-sky-phase 3.6s var(--easing) 2.2s both; }
+@keyframes splash-sky-phase {
+  0%   { opacity: 0; }
+  30%  { opacity: 1; }
+  68%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* The sun — rises warm, arcs, swells and reddens, sets behind the planet */
+.splash-sun {
+  position: absolute;
+  left: 50%;
+  top: 84vh;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: #FFEDC9;
+  opacity: 0;
+  transform: translate(-50%, 60px) scale(0.7);
+  box-shadow:
+    0 0 60px 24px rgba(253, 230, 170, 0.85),
+    0 0 160px 70px rgba(251, 146, 60, 0.45);
+  pointer-events: none;
+}
+.splash.play .splash-sun { animation: splash-sun-cycle 5.4s var(--easing) 0.35s both; }
+@keyframes splash-sun-cycle {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 60px) scale(0.7);
+    background: #FFEDC9;
+    box-shadow: 0 0 60px 24px rgba(253, 230, 170, 0.85), 0 0 160px 70px rgba(251, 146, 60, 0.45);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -17vh) scale(1);
+  }
+  48% {
+    opacity: 1;
+    transform: translate(-50%, -23vh) scale(1.04);
+    background: #FFE3AE;
+    box-shadow: 0 0 70px 28px rgba(253, 220, 150, 0.85), 0 0 180px 80px rgba(251, 146, 60, 0.50);
+  }
+  80% {
+    opacity: 0.95;
+    transform: translate(-50%, -5vh) scale(1.14);
+    background: #FB923C;
+    box-shadow: 0 0 70px 30px rgba(251, 113, 60, 0.80), 0 0 190px 90px rgba(225, 69, 126, 0.45);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 70px) scale(1.2);
+    background: #E1457E;
+    box-shadow: 0 0 60px 26px rgba(225, 69, 126, 0.70), 0 0 170px 80px rgba(168, 50, 120, 0.40);
+  }
+}
+
+/* Stars come out only once night falls */
 .splash-stars {
   position: absolute;
   inset: 0;
   opacity: 0;
 }
 .splash.play .splash-stars {
-  animation: splash-stars-in 1.6s var(--easing-out) 0.05s forwards,
-             twinkle 5s ease-in-out 1.7s infinite;
+  animation: splash-stars-in 1.8s var(--easing-out) 4.3s forwards,
+             twinkle 5s ease-in-out 6.1s infinite;
 }
 @keyframes splash-stars-in { to { opacity: 0.9; } }
+
+/* ── Phase words — Plan / Build / Execute, riding the day cycle ── */
+.splash-phases {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.splash-phase {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  opacity: 0;
+}
+.splash.play .splash-phase { animation: splash-phase-cycle 1.8s var(--easing-out) both; }
+.splash.play .splash-phase.p1 { animation-delay: 0.6s; }
+.splash.play .splash-phase.p2 { animation-delay: 2.4s; }
+.splash.play .splash-phase.p3 { animation-delay: 4.2s; }
+/* No filter:blur here — animating blur on an ancestor of
+   background-clip:text breaks the clip in Chromium (paints the full
+   gradient box). Opacity + transform only. */
+@keyframes splash-phase-cycle {
+  0%   { opacity: 0; transform: translateY(28px) scale(0.96); }
+  22%  { opacity: 1; transform: translateY(0) scale(1); }
+  74%  { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-28px) scale(1.03); }
+}
+.phase-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: rgba(255, 255, 255, 0.55);
+}
+.phase-num::after { content: " /03"; opacity: 0.45; }
+.phase-word {
+  font-size: clamp(52px, 10vw, 120px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.p1 .phase-word { background-image: linear-gradient(180deg, #FFFBEB 0%, #FDE68A 45%, #F59E0B 100%); }
+.p2 .phase-word { background-image: linear-gradient(180deg, #FFF1F2 0%, #FDA4AF 45%, #E1457E 100%); }
+.p3 .phase-word { background-image: linear-gradient(180deg, #FFFFFF 0%, #EDE8FF 45%, #A78BFA 100%); }
+.phase-cap {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1.3vw, 14px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
 
 .splash-aurora {
   position: absolute;
@@ -3742,7 +3883,7 @@ html[data-splash="pending"] { overflow: hidden; }
   filter: blur(60px);
   opacity: 0;
 }
-.splash.play .splash-aurora { animation: splash-aurora-in 2s var(--easing-out) 0.15s forwards; }
+.splash.play .splash-aurora { animation: splash-aurora-in 2.2s var(--easing-out) 4.1s forwards; }
 @keyframes splash-aurora-in { to { opacity: 1; transform: translateX(-50%) scale(1); } }
 
 .splash-horizon {
@@ -3760,9 +3901,27 @@ html[data-splash="pending"] { overflow: hidden; }
     0 -2px 0 rgba(255, 255, 255, 0.30);
   opacity: 0;
 }
-.splash.play .splash-horizon { animation: splash-horizon-rise 1.8s var(--easing-out) 0.25s forwards; }
-@keyframes splash-horizon-rise {
-  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+/* Horizon glow follows the day: warm dawn → pink dusk → violet night */
+.splash.play .splash-horizon { animation: splash-horizon-cycle 5.8s var(--easing) 0.25s forwards; }
+@keyframes splash-horizon-cycle {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(90px);
+    box-shadow: 0 -12px 60px rgba(251, 146, 60, 0.55), 0 -2px 0 rgba(255, 255, 255, 0.30);
+  }
+  14% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    box-shadow: 0 -12px 60px rgba(251, 146, 60, 0.60), 0 -2px 0 rgba(255, 255, 255, 0.30);
+  }
+  58% {
+    box-shadow: 0 -12px 60px rgba(225, 69, 126, 0.55), 0 -2px 0 rgba(255, 255, 255, 0.30);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    box-shadow: 0 -12px 60px rgba(167, 139, 250, 0.55), 0 -2px 0 rgba(255, 255, 255, 0.30);
+  }
 }
 
 /* ── Center stage ── */
@@ -3800,7 +3959,7 @@ html[data-splash="pending"] { overflow: hidden; }
   border-radius: 8px;
   transform: rotate(45deg);
 }
-.splash.play .splash-logo { animation: splash-logo-in 0.9s var(--easing-spring) 0.4s forwards; }
+.splash.play .splash-logo { animation: splash-logo-in 0.9s var(--easing-spring) 5.7s forwards; }
 @keyframes splash-logo-in {
   0%   { opacity: 0; transform: scale(0.3); }
   100% { opacity: 1; transform: scale(1); }
@@ -3816,9 +3975,9 @@ html[data-splash="pending"] { overflow: hidden; }
   pointer-events: none;
 }
 .splash.play .splash-ring { animation: splash-ring-pulse 2.6s var(--easing-out) infinite; }
-.splash.play .splash-ring.r1 { animation-delay: 0.7s; }
-.splash.play .splash-ring.r2 { animation-delay: 1.3s; }
-.splash.play .splash-ring.r3 { animation-delay: 1.9s; }
+.splash.play .splash-ring.r1 { animation-delay: 6.0s; }
+.splash.play .splash-ring.r2 { animation-delay: 6.6s; }
+.splash.play .splash-ring.r3 { animation-delay: 7.2s; }
 @keyframes splash-ring-pulse {
   0%   { opacity: 0;    transform: scale(0.55); }
   18%  { opacity: 0.85; }
@@ -3865,7 +4024,7 @@ html[data-splash="pending"] { overflow: hidden; }
   pointer-events: none;
   opacity: 0;
 }
-.splash.play .splash-title::after { animation: splash-sheen 1.3s var(--easing) 2.5s forwards; }
+.splash.play .splash-title::after { animation: splash-sheen 1.3s var(--easing) 7.7s forwards; }
 @keyframes splash-sheen {
   0%   { opacity: 1; background-position: 120% 0; }
   100% { opacity: 0; background-position: -60% 0; }
@@ -3892,7 +4051,7 @@ html[data-splash="pending"] { overflow: hidden; }
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
   transform: scaleX(0);
 }
-.splash.play .splash-divider { animation: splash-divider-in 0.9s var(--easing-out) 2.45s forwards; }
+.splash.play .splash-divider { animation: splash-divider-in 0.9s var(--easing-out) 7.6s forwards; }
 @keyframes splash-divider-in { to { transform: scaleX(1); } }
 
 .splash-sub {
@@ -3907,7 +4066,7 @@ html[data-splash="pending"] { overflow: hidden; }
   opacity: 0;
   transform: translateY(10px);
 }
-.splash.play .splash-sub { animation: splash-fade-up 0.8s var(--easing-out) 2.7s forwards; }
+.splash.play .splash-sub { animation: splash-fade-up 0.8s var(--easing-out) 7.8s forwards; }
 .splash-sub .live-dot {
   width: 6px;
   height: 6px;
@@ -3939,7 +4098,7 @@ html[data-splash="pending"] { overflow: hidden; }
   background: var(--grad-primary);
   box-shadow: 0 0 12px var(--accent-glow);
 }
-.splash.play .splash-progress span { animation: splash-progress-fill 3.9s cubic-bezier(0.3, 0, 0.4, 1) 0.3s forwards; }
+.splash.play .splash-progress span { animation: splash-progress-fill 8.8s cubic-bezier(0.3, 0, 0.4, 1) 0.3s forwards; }
 @keyframes splash-progress-fill { to { width: 100%; } }
 
 .splash-skip {
@@ -3954,7 +4113,7 @@ html[data-splash="pending"] { overflow: hidden; }
   opacity: 0;
   z-index: 2;
 }
-.splash.play .splash-skip { animation: splash-skip-in 1s var(--easing) 1.9s forwards; }
+.splash.play .splash-skip { animation: splash-skip-in 1s var(--easing) 1.2s forwards; }
 @keyframes splash-skip-in { to { opacity: 0.7; } }
 
 /* ── Exit — content lifts and blurs, overlay dissolves ── */
@@ -3975,4 +4134,7 @@ html[data-splash="pending"] { overflow: hidden; }
   .splash-logo { border-radius: 18px; }
   .splash-logo::before { width: 30px; height: 30px; border-width: 3px; }
   .splash-skip { right: 20px; bottom: 18px; }
+  .splash-sun { width: 68px; height: 68px; }
+  .phase-num { font-size: 11px; letter-spacing: 0.4em; }
+  .phase-cap { letter-spacing: 0.2em; padding: 0 24px; }
 }
