@@ -3687,9 +3687,15 @@ body::before, body::after { content: none; }
 }
 
 /* ════════════════════════════════════════════════════════════════
-   SPLASH INTRO — "Welcome to the future of AI Activation"
-   Once per session. Gated pre-paint by an inline <head> script that
-   sets <html data-splash="pending">; choreographed by js/splash.js.
+   SPLASH INTRO — film-leader countdown, "Studio presents…"
+   A projector flickers up over film grain, the studio card appears,
+   the countdown leader ticks 3·2·1 with a violet sweep, a flash
+   frame cuts to the violet title card. Once per session; gated
+   pre-paint by an inline <head> script; choreographed by js/splash.js.
+
+   Timeline (s):  0.0 projector bloom · 0.5–2.0 presents card ·
+   2.0–5.6 leader (numbers at 2.0/3.2/4.4) · 5.62 flash frame ·
+   5.7→ night scene + title card · 9.4 auto-exit.
    ════════════════════════════════════════════════════════════════ */
 
 #splash { display: none; }
@@ -3711,193 +3717,252 @@ html[data-splash="pending"] { overflow: hidden; }
     radial-gradient(ellipse 120% 90% at 50% 110%, #14102E 0%, #0A0B1A 45%, #06070F 100%);
 }
 
-/* ── Backdrop layers — an ascent: dawn → full daylight → orbit ── */
-.splash-sky-dawn,
-.splash-sky-day {
+/* ── Film texture: grain, projector flicker, sprocket strips ── */
+.splash-grain {
+  position: absolute;
+  inset: -20%;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.10;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
+}
+.splash.play .splash-grain { animation: splash-grain-jump 0.45s steps(5) infinite, splash-grain-settle 1s var(--easing) 5.8s forwards; }
+@keyframes splash-grain-jump {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-3%, 2%); }
+  40%  { transform: translate(2%, -3%); }
+  60%  { transform: translate(-2%, -2%); }
+  80%  { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes splash-grain-settle { to { opacity: 0.05; } }
+
+.splash-flicker {
   position: absolute;
   inset: 0;
-  opacity: 0;
+  z-index: 5;
   pointer-events: none;
+  background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(244, 240, 255, 0.10), transparent 70%);
+  opacity: 0;
 }
-.splash-sky-dawn {
-  background:
-    radial-gradient(ellipse 95% 70% at 50% 102%,
-      rgba(251, 146, 60, 0.60),
-      rgba(252, 211, 77, 0.30) 32%,
-      rgba(254, 243, 199, 0.10) 52%,
-      rgba(96, 130, 200, 0.06) 70%,
-      transparent 82%);
+.splash.play .splash-flicker { animation: splash-projector-flicker 5.6s linear forwards; }
+@keyframes splash-projector-flicker {
+  0%    { opacity: 0; }
+  4%    { opacity: 0.9; }
+  6%    { opacity: 0.3; }
+  9%    { opacity: 1; }
+  12%   { opacity: 0.55; }
+  16%   { opacity: 0.85; }
+  22%   { opacity: 0.65; }
+  28%   { opacity: 0.9; }
+  35%   { opacity: 0.7; }
+  43%   { opacity: 0.95; }
+  52%   { opacity: 0.75; }
+  61%   { opacity: 0.9; }
+  70%   { opacity: 0.7; }
+  80%   { opacity: 0.85; }
+  90%   { opacity: 0.75; }
+  100%  { opacity: 0; }
 }
-.splash-sky-day {
-  background:
-    radial-gradient(ellipse 110% 85% at 50% 102%,
-      rgba(125, 211, 252, 0.50),
-      rgba(96, 165, 250, 0.32) 30%,
-      rgba(59, 130, 246, 0.16) 52%,
-      rgba(99, 102, 241, 0.08) 70%,
-      transparent 84%);
+
+/* Film edges — sprocket holes scrolling past */
+.splash-sprockets {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(244, 244, 248, 0.10) 0 18px,
+    transparent 18px 40px
+  );
 }
-.splash.play .splash-sky-dawn { animation: splash-sky-phase 4.6s var(--easing) 0.3s both; }
-.splash.play .splash-sky-day  { animation: splash-sky-phase 3.6s var(--easing) 2.2s both; }
-@keyframes splash-sky-phase {
+.splash-sprockets.left  { left: 18px; }
+.splash-sprockets.right { right: 18px; }
+.splash.play .splash-sprockets {
+  animation: splash-sprocket-roll 0.55s linear infinite,
+             splash-sprocket-fade 5.8s var(--easing) forwards;
+}
+@keyframes splash-sprocket-roll { to { background-position-y: 40px; } }
+@keyframes splash-sprocket-fade {
   0%   { opacity: 0; }
-  30%  { opacity: 1; }
-  68%  { opacity: 1; }
+  6%   { opacity: 1; }
+  93%  { opacity: 1; }
   100% { opacity: 0; }
 }
 
-/* The sun — rises warm, climbs to brilliant white daylight, then
-   ascends out of the top of frame as we rise past it into orbit.
-   It never sets. */
-.splash-sun {
+/* ── Act 1: "AI Activation Studio presents" card ── */
+.splash-card {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+}
+.splash.play .splash-card { animation: splash-card-flicker 1.5s linear 0.5s both; }
+@keyframes splash-card-flicker {
+  0%   { opacity: 0; }
+  6%   { opacity: 0.7; }
+  10%  { opacity: 0.2; }
+  16%  { opacity: 0.9; }
+  22%  { opacity: 0.5; }
+  30%  { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+.card-studio {
+  font-family: var(--font-mono);
+  font-size: clamp(18px, 3vw, 30px);
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: #E8E6F2;
+  text-shadow: 0 0 24px rgba(244, 240, 255, 0.35);
+  padding-left: 0.45em; /* visually re-center the tracked text */
+}
+.card-rule {
+  width: 220px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232, 230, 242, 0.6), transparent);
+}
+.card-presents {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1.4vw, 14px);
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-left: 0.6em;
+}
+
+/* ── Act 2: countdown leader ── */
+.splash-leader {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+}
+.splash.play .splash-leader { animation: splash-snap-window 3.6s linear 2s both; }
+/* Film frames don't fade — they snap */
+@keyframes splash-snap-window {
+  0%    { opacity: 0; }
+  1%    { opacity: 1; }
+  99.5% { opacity: 1; }
+  100%  { opacity: 0; }
+}
+
+.leader-cross-h,
+.leader-cross-v {
+  position: absolute;
+  background: rgba(232, 230, 242, 0.28);
+}
+.leader-cross-h { left: 0; right: 0; top: 50%; height: 1px; }
+.leader-cross-v { top: 0; bottom: 0; left: 50%; width: 1px; }
+
+.leader-circle {
   position: absolute;
   left: 50%;
-  top: 84vh;
-  width: 92px;
-  height: 92px;
+  top: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: #FFEDC9;
-  opacity: 0;
-  transform: translate(-50%, 60px) scale(0.7);
-  pointer-events: none;
+  border: 1.5px solid rgba(232, 230, 242, 0.40);
 }
-/* Halo via radial-gradient pseudo-elements — large box-shadow blurs
-   rasterize with boxy falloff in Chromium; gradients stay smooth.
-   Warm dawn halo crossfades into a cool white one as the sun climbs. */
-.splash-sun::before,
-.splash-sun::after {
-  content: "";
+.leader-circle.c1 { width: 64vmin; height: 64vmin; }
+.leader-circle.c2 { width: 46vmin; height: 46vmin; border-color: rgba(232, 230, 242, 0.22); }
+
+/* Radar sweep — one revolution per count */
+.leader-sweep {
   position: absolute;
-  inset: -240%;
-  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  width: 170vmax;
+  height: 170vmax;
+  margin: -85vmax 0 0 -85vmax;
+  background: conic-gradient(
+    from 0deg,
+    rgba(167, 139, 250, 0.22) 0deg,
+    rgba(167, 139, 250, 0.07) 55deg,
+    transparent 95deg
+  );
 }
-.splash-sun::before {
-  background: radial-gradient(circle,
-    rgba(255, 240, 200, 0.80) 9%,
-    rgba(253, 211, 120, 0.38) 22%,
-    rgba(251, 146, 60, 0.20) 40%,
-    transparent 66%);
-}
-.splash-sun::after {
-  background: radial-gradient(circle,
-    rgba(255, 255, 255, 0.80) 9%,
-    rgba(255, 250, 230, 0.38) 22%,
-    rgba(147, 197, 253, 0.20) 42%,
-    transparent 66%);
+.splash.play .leader-sweep { animation: splash-sweep-rotate 1.2s linear 2s 3; }
+@keyframes splash-sweep-rotate { to { transform: rotate(360deg); } }
+
+.leader-num {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -54%);
+  font-size: clamp(160px, 34vmin, 300px);
+  font-weight: 800;
+  line-height: 1;
+  color: #F4F2FC;
+  text-shadow: 0 0 60px rgba(167, 139, 250, 0.55);
   opacity: 0;
 }
-.splash.play .splash-sun { animation: splash-sun-ascent 5.4s var(--easing) 0.35s both; }
-.splash.play .splash-sun::before { animation: splash-halo-warm 5.4s var(--easing) 0.35s both; }
-.splash.play .splash-sun::after  { animation: splash-halo-cool 5.4s var(--easing) 0.35s both; }
-@keyframes splash-sun-ascent {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, 60px) scale(0.7);
-    background: #FFEDC9;
-  }
-  20% {
-    opacity: 1;
-    transform: translate(-50%, -17vh) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(calc(-50% + 12vw), -32vh) scale(1.05);
-    background: #FFF6D8;
-  }
-  82% {
-    opacity: 1;
-    transform: translate(calc(-50% + 24vw), -68vh) scale(0.92);
-    background: #FFFDF2;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(calc(-50% + 32vw), -115vh) scale(0.8);
-    background: #FFFFFF;
-  }
-}
-@keyframes splash-halo-warm {
-  0%   { opacity: 1; }
-  45%  { opacity: 1; }
-  80%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-@keyframes splash-halo-cool {
-  0%   { opacity: 0; }
-  45%  { opacity: 0.35; }
-  82%  { opacity: 1; }
-  100% { opacity: 1; }
+.splash.play .leader-num { animation: splash-num-frame 1.2s linear both; }
+.splash.play .leader-num.n3 { animation-delay: 2.0s; }
+.splash.play .leader-num.n2 { animation-delay: 3.2s; }
+.splash.play .leader-num.n1 { animation-delay: 4.4s; }
+@keyframes splash-num-frame {
+  0%    { opacity: 0; transform: translate(-50%, -54%) scale(1.07); }
+  1%    { opacity: 1; transform: translate(-50%, -54%) scale(1.07); }
+  10%   { transform: translate(-50%, -54%) scale(1); }
+  99.5% { opacity: 1; transform: translate(-50%, -54%) scale(1); }
+  100%  { opacity: 0; }
 }
 
-/* Stars come out only once night falls */
+.leader-corner {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(156, 160, 188, 0.85);
+}
+.leader-corner.tl { top: 26px; left: 54px; }
+.leader-corner.tr { top: 26px; right: 54px; }
+/* Keep the bottom labels clear of the skip hint */
+.leader-corner.bl { bottom: 56px; left: 54px; }
+.leader-corner.br { bottom: 56px; right: 54px; }
+
+/* Flash frame on the cut from leader to title card */
+.splash-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: #F4F2FC;
+  opacity: 0;
+  pointer-events: none;
+}
+.splash.play .splash-flash { animation: splash-flash-frame 0.22s linear 5.62s both; }
+@keyframes splash-flash-frame {
+  0%   { opacity: 0; }
+  35%  { opacity: 0.85; }
+  100% { opacity: 0; }
+}
+
+/* ── Act 3 backdrop: the night scene rises for the title card ── */
 .splash-stars {
   position: absolute;
   inset: 0;
   opacity: 0;
 }
 .splash.play .splash-stars {
-  animation: splash-stars-in 1.8s var(--easing-out) 4.3s forwards,
-             twinkle 5s ease-in-out 6.1s infinite;
+  animation: splash-stars-in 1.6s var(--easing-out) 5.7s forwards,
+             twinkle 5s ease-in-out 7.3s infinite;
 }
 @keyframes splash-stars-in { to { opacity: 0.9; } }
-
-/* ── Phase words — Plan / Build / Execute, riding the day cycle ── */
-.splash-phases {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-.splash-phase {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-align: center;
-  opacity: 0;
-}
-.splash.play .splash-phase { animation: splash-phase-cycle 1.8s var(--easing-out) both; }
-.splash.play .splash-phase.p1 { animation-delay: 0.6s; }
-.splash.play .splash-phase.p2 { animation-delay: 2.4s; }
-.splash.play .splash-phase.p3 { animation-delay: 4.2s; }
-/* No filter:blur here — animating blur on an ancestor of
-   background-clip:text breaks the clip in Chromium (paints the full
-   gradient box). Opacity + transform only. */
-@keyframes splash-phase-cycle {
-  0%   { opacity: 0; transform: translateY(28px) scale(0.96); }
-  22%  { opacity: 1; transform: translateY(0) scale(1); }
-  74%  { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(-28px) scale(1.03); }
-}
-.phase-num {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: 0.5em;
-  color: rgba(255, 255, 255, 0.55);
-}
-.phase-num::after { content: " /03"; opacity: 0.45; }
-.phase-word {
-  font-size: clamp(52px, 10vw, 120px);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-.p1 .phase-word { background-image: linear-gradient(180deg, #FFFBEB 0%, #FDE68A 45%, #F59E0B 100%); }
-.p2 .phase-word { background-image: linear-gradient(180deg, #F0F9FF 0%, #93C5FD 45%, #2563EB 100%); }
-.p3 .phase-word { background-image: linear-gradient(180deg, #FFFFFF 0%, #EDE8FF 45%, #A78BFA 100%); }
-.phase-cap {
-  font-family: var(--font-mono);
-  font-size: clamp(11px, 1.3vw, 14px);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
 
 .splash-aurora {
   position: absolute;
@@ -3918,7 +3983,7 @@ html[data-splash="pending"] { overflow: hidden; }
   filter: blur(60px);
   opacity: 0;
 }
-.splash.play .splash-aurora { animation: splash-aurora-in 2.2s var(--easing-out) 4.1s forwards; }
+.splash.play .splash-aurora { animation: splash-aurora-in 1.8s var(--easing-out) 5.65s forwards; }
 @keyframes splash-aurora-in { to { opacity: 1; transform: translateX(-50%) scale(1); } }
 
 .splash-horizon {
@@ -3936,30 +4001,12 @@ html[data-splash="pending"] { overflow: hidden; }
     0 -2px 0 rgba(255, 255, 255, 0.30);
   opacity: 0;
 }
-/* Horizon glow follows the ascent: warm dawn → blue daylight → violet orbit */
-.splash.play .splash-horizon { animation: splash-horizon-cycle 5.8s var(--easing) 0.25s forwards; }
-@keyframes splash-horizon-cycle {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(90px);
-    box-shadow: 0 -12px 60px rgba(251, 146, 60, 0.55), 0 -2px 0 rgba(255, 255, 255, 0.30);
-  }
-  14% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    box-shadow: 0 -12px 60px rgba(251, 146, 60, 0.60), 0 -2px 0 rgba(255, 255, 255, 0.30);
-  }
-  58% {
-    box-shadow: 0 -12px 60px rgba(96, 165, 250, 0.55), 0 -2px 0 rgba(255, 255, 255, 0.30);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    box-shadow: 0 -12px 60px rgba(167, 139, 250, 0.55), 0 -2px 0 rgba(255, 255, 255, 0.30);
-  }
+.splash.play .splash-horizon { animation: splash-horizon-rise 1.6s var(--easing-out) 5.65s forwards; }
+@keyframes splash-horizon-rise {
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
-/* ── Center stage ── */
+/* ── Act 3: title card ── */
 .splash-inner {
   position: relative;
   z-index: 2;
@@ -3994,7 +4041,7 @@ html[data-splash="pending"] { overflow: hidden; }
   border-radius: 8px;
   transform: rotate(45deg);
 }
-.splash.play .splash-logo { animation: splash-logo-in 0.9s var(--easing-spring) 5.7s forwards; }
+.splash.play .splash-logo { animation: splash-logo-in 0.9s var(--easing-spring) 5.85s forwards; }
 @keyframes splash-logo-in {
   0%   { opacity: 0; transform: scale(0.3); }
   100% { opacity: 1; transform: scale(1); }
@@ -4010,9 +4057,9 @@ html[data-splash="pending"] { overflow: hidden; }
   pointer-events: none;
 }
 .splash.play .splash-ring { animation: splash-ring-pulse 2.6s var(--easing-out) infinite; }
-.splash.play .splash-ring.r1 { animation-delay: 6.0s; }
-.splash.play .splash-ring.r2 { animation-delay: 6.6s; }
-.splash.play .splash-ring.r3 { animation-delay: 7.2s; }
+.splash.play .splash-ring.r1 { animation-delay: 6.1s; }
+.splash.play .splash-ring.r2 { animation-delay: 6.7s; }
+.splash.play .splash-ring.r3 { animation-delay: 7.3s; }
 @keyframes splash-ring-pulse {
   0%   { opacity: 0;    transform: scale(0.55); }
   18%  { opacity: 0.85; }
@@ -4169,7 +4216,11 @@ html[data-splash="pending"] { overflow: hidden; }
   .splash-logo { border-radius: 18px; }
   .splash-logo::before { width: 30px; height: 30px; border-width: 3px; }
   .splash-skip { right: 20px; bottom: 18px; }
-  .splash-sun { width: 68px; height: 68px; }
-  .phase-num { font-size: 11px; letter-spacing: 0.4em; }
-  .phase-cap { letter-spacing: 0.2em; padding: 0 24px; }
+  .card-studio { letter-spacing: 0.3em; padding-left: 0.3em; }
+  .card-presents { letter-spacing: 0.45em; padding-left: 0.45em; }
+  .leader-corner.tl, .leader-corner.bl { left: 44px; }
+  .leader-corner.tr, .leader-corner.br { right: 44px; }
+  .leader-corner { font-size: 9px; }
+  .splash-sprockets.left  { left: 8px; }
+  .splash-sprockets.right { right: 8px; }
 }
