@@ -4039,6 +4039,40 @@ html[data-splash="pending"] { overflow: hidden; }
   letter-spacing: -0.03em;
   margin: 0 0 28px;
 }
+/* Morph segments — "The Future of AI Activation" becomes
+   "AI Activation Studio" once the headline has landed */
+.splash-title .t-future,
+.splash-title .t-core,
+.splash-title .t-studio {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: top;
+}
+.splash-title .t-future {
+  margin-right: 0.24em;
+  max-width: 8em;
+  overflow: hidden;
+}
+.splash-title .t-studio {
+  max-width: 0;
+  margin-left: 0;
+  opacity: 0;
+  overflow: hidden;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.splash.play .t-future { animation: splash-future-out 0.8s var(--easing) 8.6s forwards; }
+.splash.play .t-studio { animation: splash-studio-in 0.9s var(--easing) 8.7s forwards; }
+@keyframes splash-future-out {
+  to { max-width: 0; margin-right: 0; opacity: 0; }
+}
+@keyframes splash-studio-in {
+  to { max-width: 4em; margin-left: 0.24em; opacity: 1; }
+}
+
 .splash-title .splash-ch {
   /* Vertical gradient per character reads as one seamless gradient */
   background: linear-gradient(180deg, #FFFFFF 0%, #EDE8FF 45%, #A78BFA 100%);
@@ -4059,7 +4093,7 @@ html[data-splash="pending"] { overflow: hidden; }
   pointer-events: none;
   opacity: 0;
 }
-.splash.play .splash-title::after { animation: splash-sheen 1.3s var(--easing) 7.7s forwards; }
+.splash.play .splash-title::after { animation: splash-sheen 1.3s var(--easing) 7.9s forwards; }
 @keyframes splash-sheen {
   0%   { opacity: 1; background-position: 120% 0; }
   100% { opacity: 0; background-position: -60% 0; }
@@ -4086,7 +4120,7 @@ html[data-splash="pending"] { overflow: hidden; }
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
   transform: scaleX(0);
 }
-.splash.play .splash-divider { animation: splash-divider-in 0.9s var(--easing-out) 7.6s forwards; }
+.splash.play .splash-divider { animation: splash-divider-in 0.9s var(--easing-out) 7.8s forwards; }
 @keyframes splash-divider-in { to { transform: scaleX(1); } }
 
 .splash-sub {
@@ -4101,7 +4135,7 @@ html[data-splash="pending"] { overflow: hidden; }
   opacity: 0;
   transform: translateY(10px);
 }
-.splash.play .splash-sub { animation: splash-fade-up 0.8s var(--easing-out) 7.8s forwards; }
+.splash.play .splash-sub { animation: splash-fade-up 0.8s var(--easing-out) 8.0s forwards; }
 .splash-sub .live-dot {
   width: 6px;
   height: 6px;
@@ -4133,7 +4167,7 @@ html[data-splash="pending"] { overflow: hidden; }
   background: var(--grad-primary);
   box-shadow: 0 0 12px var(--accent-glow);
 }
-.splash.play .splash-progress span { animation: splash-progress-fill 8.8s cubic-bezier(0.3, 0, 0.4, 1) 0.3s forwards; }
+.splash.play .splash-progress span { animation: splash-progress-fill 9.8s cubic-bezier(0.3, 0, 0.4, 1) 0.3s forwards; }
 @keyframes splash-progress-fill { to { width: 100%; } }
 
 .splash-skip {
@@ -4162,6 +4196,21 @@ html[data-splash="pending"] { overflow: hidden; }
   filter: blur(8px);
   opacity: 0;
 }
+/* Flight exit — js/splash.js adds .fly and sets a transform that lands
+   the title on the landing page's .studio-h heading (FLIP) */
+.splash.exit.fly .splash-inner {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+.splash.exit.fly .splash-mark,
+.splash.exit.fly .splash-kicker,
+.splash.exit.fly .splash-divider,
+.splash.exit.fly .splash-sub {
+  opacity: 0 !important;
+  transition: opacity 0.3s var(--easing-in);
+}
+.splash.exit.fly .splash-title::after { display: none; }
 
 @media (max-width: 720px) {
   .splash-kicker { letter-spacing: 0.28em; }

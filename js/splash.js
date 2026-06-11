@@ -6,8 +6,8 @@
 
 (function () {
   const SPLASH_KEY = 'aas-splash-seen';
-  const TOTAL_MS   = 9600;   // day cycle (~5.6s) + finale, then auto-dismiss
-  const EXIT_MS    = 750;    // exit transition length (matches CSS)
+  const TOTAL_MS   = 10400;  // day cycle + finale + title morph, then dismiss
+  const EXIT_MS    = 900;    // exit transition length (matches CSS flight)
 
   const root = document.documentElement;
   const pending = root.getAttribute('data-splash') === 'pending';
@@ -37,9 +37,12 @@
 
     markSeen();
     buildStars(splash.querySelector('.splash-stars'));
-    // Finale text lands after the day cycle (Plan/Build/Execute) completes
+    // Finale text lands after the day cycle (Plan/Build/Execute) completes.
+    // The headline reveals as "The Future of AI Activation"; at 8.6s the
+    // CSS morph collapses "The Future of" and brings in "Studio".
     splitLetters(splash.querySelector('.splash-kicker'), 6.2, 0.045);
-    splitLetters(splash.querySelector('.splash-title'), 6.7, 0.05);
+    splitLetters(splash.querySelector('.splash-title .t-future'), 6.55, 0.04);
+    splitLetters(splash.querySelector('.splash-title .t-core'), 7.15, 0.04);
 
     let exited = false;
     let autoTimer;
@@ -48,9 +51,34 @@
       if (exited) return;
       exited = true;
       clearTimeout(autoTimer);
+      flyTitleHome();
       splash.classList.add('exit');
       root.setAttribute('data-splash', 'exiting');
       setTimeout(removeSplash, EXIT_MS);
+    }
+
+    // FLIP the splash wordmark onto the landing hero heading so the
+    // title visibly travels to where it lives on the page.
+    function flyTitleHome() {
+      const title = splash.querySelector('.splash-title');
+      const target = document.querySelector('#page-landing .studio-h');
+      if (!title || !target) return;
+      // Measure the rendered text, not the h1 blocks — both headings are
+      // block elements whose boxes span their containers.
+      const textRect = el => {
+        const r = document.createRange();
+        r.selectNodeContents(el);
+        return r.getBoundingClientRect();
+      };
+      const a = textRect(title);
+      const b = textRect(target);
+      if (!a.width || !b.width) return;
+      const scale = b.width / a.width;
+      const dx = (b.left + b.width / 2) - (a.left + a.width / 2);
+      const dy = (b.top + b.height / 2) - (a.top + a.height / 2);
+      title.style.transition = 'transform 0.85s cubic-bezier(0.16, 1, 0.3, 1)';
+      title.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(' + scale + ')';
+      splash.classList.add('fly');
     }
 
     // Start the choreography on the next frame so transitions register.
