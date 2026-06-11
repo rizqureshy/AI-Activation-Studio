@@ -53,12 +53,13 @@
       setTimeout(removeSplash, EXIT_MS);
     }
 
-    // Start the choreography on the next frame so transitions register
+    // Start the choreography on the next frame so transitions register.
+    // The auto-dismiss timer starts here too, so it stays in sync with
+    // the animation timeline however long first paint takes.
     requestAnimationFrame(() => requestAnimationFrame(() => {
       splash.classList.add('play');
+      autoTimer = setTimeout(exit, TOTAL_MS);
     }));
-
-    autoTimer = setTimeout(exit, TOTAL_MS);
     splash.addEventListener('click', exit);
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') exit();
