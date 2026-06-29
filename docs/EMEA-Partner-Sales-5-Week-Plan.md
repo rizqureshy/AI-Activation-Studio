@@ -11,7 +11,7 @@
 |---|---|
 | **Audience** | EMEA Partner Sales — ~40 people, hybrid, mixed AI proficiency |
 | **Format** | Monthly Marathon — individual activities through the week + one team checkpoint |
-| **Duration** | 5 weeks (can flex to 6 with a ramp/run-off week) |
+| **Duration** | 4 core weeks + an optional **Week 5 bonus track** (can flex to 6) |
 | **Cadence** | Light daily/weekly activities (~2–3 hrs/wk) · weekly checkpoint folded into existing team meeting |
 | **Executive sponsor / judge** | Stefan + Channel Sales leadership |
 | **Capstone** | A QBR deck per country team — winner selected by Stefan, showcased at the **September all-hands** |
@@ -21,15 +21,15 @@
 
 ---
 
-## The 5-Week Arc — every week builds toward the QBR deck
+## The Arc — Weeks 1–4 build toward the QBR deck · Week 5 is an optional bonus
 
 | Week | Theme | Capability focus | Sample activities (individual) | Weekly checkpoint |
 |---|---|---|---|---|
 | **1** | **Foundations & Fast Research** | Prompt Engineering · Research & Strategy | • Prompt basics: rewrite a partner email 3 ways • Build a reusable partner-sales prompt cheat-sheet • AI-assisted partner & market briefing in 15 min • Quick competitive scan on a key partner | Each person shares **one prompt that saved them time** |
 | **2** | **Partner Intelligence & Proposals** | Customer Intelligence · Content Generation | • Partner stakeholder / persona map • Needs & sentiment read from partner notes • Draft a partner **proposal** section with AI • Generate a **sales pitch** one-pager | Share a **before/after** proposal or pitch snippet |
-| **3** | **Pitch, Present & Plan** | Presentation & Communication · (Account Plan) + No-code awareness | • Turn a proposal into a pitch-deck outline • Build/refine an **account plan** with AI • Draft an exec summary for an account • *"What is vibe coding?"* — build a tiny **no-code** helper | Share an account-plan or deck slide improved with AI |
-| **4** | **Ship It — Manage, Version & Publish** | App & Code Management · Git · GitHub · Publishing | • Version a vibe-coded app with **Git** (commits, history) • Put a project on **GitHub** — repo + README • **Publish/deploy** a working tool others can open • Iterate & re-publish; share with your team | Share a **live link** to something you published |
-| **5** | **QBR Capstone & Showcase** | Synthesis: Presentation · Research · Content | • Country teams co-build a **QBR deck** with AI (+ optional live **tool demo**) • Peer review & polish • Submit team nomination • Stefan selects winner → prep for all-hands | **Team nominations** — QBR deck per country |
+| **3** | **Pitch, Present & Plan** | Presentation & Communication · Account Plan | • Turn a proposal into a pitch-deck outline • Build/refine an **account plan** with AI • Draft an exec summary for an account • AI **talking points & objection handling** | Share an account-plan or deck slide improved with AI |
+| **4** | **QBR Capstone & Showcase** | Synthesis: Presentation · Research · Content | • Country teams co-build a **QBR deck** with AI • Peer review & polish • Submit team nomination • Stefan selects winner → prep for all-hands | **Team nominations** — QBR deck per country |
+| **★ Bonus · Wk 5** | **Vibe-Coding & Ship It** *(optional / advanced)* | No-code / Vibe-coding · Git · GitHub · Publishing | • Build a tool by describing it — **Replit / Lovable / Emergent AI** • Version with **Git** + put it on **GitHub** • **Publish/deploy** so others can open it • Share your build with the team | *Optional* — show a live tool you built & shipped |
 
 ---
 
@@ -37,7 +37,8 @@
 
 - **Individual activities** run through each week and earn points → **leaderboard** (drives adoption & friendly competition).
 - **Weekly checkpoint** (15–20 min) rides on the existing team meeting — no new meeting load. Each country lead runs it.
-- **Final week is team-based**: each country team nominates one **QBR deck**, assembled with AI.
+- **Week 4 is team-based**: each country team nominates one **QBR deck**, assembled with AI.
+- **Week 5 is an optional bonus track** — *Vibe-Coding & Ship It* — for anyone who wants to build and publish a real tool; not required to compete.
 - **Judging**: Stefan selects the winning deck; winner is **shared at the September all-hands**.
 - **Recognition**: leaderboard standing throughout + a **small token of appreciation** for top participants / winning team.
 
@@ -50,8 +51,8 @@
 | Everyday AI assistant | Microsoft Copilot · ChatGPT · Claude |
 | Decks & visuals | Copilot in PowerPoint · Gamma |
 | Research & competitive | Copilot · Perplexity |
-| No-code / vibe-code | Replit · Lovable · Emergent AI (Week 3 build) |
-| Ship & publish | Git · GitHub · platform deploy/share (Week 4) |
+| No-code / vibe-code *(bonus)* | Replit · Lovable · Emergent AI |
+| Ship & publish *(bonus)* | Git · GitHub · platform deploy/share |
 
 > Frame for the team: *"Here's a recommended starting set — use what's approved and available to you. No tool is off-limits unless policy says so."*
 
@@ -61,7 +62,7 @@
 
 - **Adoption** → daily/weekly activities + leaderboard build the habit; checkpoints keep it visible.
 - **Time saved** → activities target real recurring work (research, proposals, decks); we capture "time saved" stories at each checkpoint.
-- **Confidence** → mixed-level ramp from prompts → proposals → decks → shipping a published tool, with weekly peer sharing and a team capstone.
+- **Confidence** → mixed-level ramp from prompts → proposals → decks, with weekly peer sharing and a team capstone (and an optional bonus track for those who want to build & ship a tool).
 
 ---
 
@@ -75,7 +76,7 @@
 
 ## Open items to confirm *(this is a baseline — these shape the detail)*
 
-1. **Start date** and 5 vs. 6 weeks.
+1. **Start date**, and whether to run the **Week 5 bonus track** (and for whom).
 2. **Country team groupings** and how many QBR nominations total.
 3. **Approved tool list** to formally recommend.
 4. **Points model** and where the leaderboard lives.
