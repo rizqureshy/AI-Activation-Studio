@@ -49,7 +49,7 @@
 | Everyday AI assistant | Microsoft Copilot · ChatGPT · Claude |
 | Decks & visuals | Copilot in PowerPoint · Gamma |
 | Research & competitive | Copilot · Perplexity |
-| No-code awareness | A no-code app/bot builder (for the Week 3 session) |
+| No-code / vibe-code | Replit · Lovable · Emergent AI (for the Week 3 session) |
 
 > Frame for the team: *"Here's a recommended starting set — use what's approved and available to you. No tool is off-limits unless policy says so."*
 
