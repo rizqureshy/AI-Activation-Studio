@@ -39,9 +39,11 @@
 | PA-003 | SOP Generator | KEEP+ | AI interviews you for gaps; colleague must follow it unaided |
 | PA-004 | Onboarding Checklist | KEEP+ | Pressure-tested by the newest joiner |
 | PA-005 | Workflow Optimizer | KEEP+ | Forced minutes-saved estimates + an actual one-week pilot |
-| PA-006 | Email Triage Rules | KEEP+ | Measured agreement rate against 20 real messages |
-| PA-007 | AI Co-Worker SOP | KEEP+ | Added "what AI gets wrong here" section; teammate replication test |
-| PA-008 | Form Auto-Filler | KEEP+ | Measured time-saved across 3 real uses |
+| PA-006 | ~~Email Triage Rules~~ → **Triage My Inbox** | **REBUILT · beginner** | Scoped down per sponsor feedback: sort 10 emails into 3 piles, compare with your own sort, save the prompt — no agreement-rate metrics |
+| PA-007 | ~~AI Co-Worker SOP~~ → **My AI Recipe Card** | **REBUILT · beginner** | A 4-line recipe card (WHEN / I PASTE / I ASK / I CHECK) one teammate tries — not a full SOP with replication testing |
+| PA-008 | ~~Form Auto-Filler~~ → **Notes to Form, Instantly** | **REBUILT · beginner** | Tool-building removed: a reusable prompt that learns your format from a past example — 20 minutes, no app |
+
+> **Difficulty balance note.** The first audit pass left Process Automation with *zero* beginner activities — every entry point was intermediate or advanced. PA-006/7/8 are now deliberate beginner on-ramps (20 min, no tooling, no metrics), giving the track a proper ramp: 3 beginner → 3 intermediate → 2 advanced. This also matters mechanically: program formats with beginner-weighted mixes could not auto-fill from this track before.
 
 ### Presentation & Communication
 | ID | Activity | Verdict | Key fix |
