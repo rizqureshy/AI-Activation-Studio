@@ -22,7 +22,7 @@ AI Activation Studio is a browser-based command center for trainers running an A
 
 ## What's in the box
 
-- **100+ hands-on activities** across 12 capability tracks (prompt engineering, content, data, visual, app building, automation, presentation, creative, customer intel, research, learning design, code)
+- **140 hands-on activities** across 13 capability tracks (prompt engineering, content, data, visual, app building, automation, presentation, creative, customer intel, research, learning design, code, AI in everyday tools)
 - **100-item learning catalog** — vetted videos, courses, and labs from LinkedIn Learning (45 items, included with Equinix's organizational membership), DeepLearning.AI, Coursera, Microsoft Learn, IBM SkillsBuild, Nvidia DLI, Anthropic, OpenAI, Hugging Face, fast.ai, Kaggle, Stanford, and YouTube (Karpathy, 3Blue1Brown)
 - **8 delivery formats** (workshop, weekly sprint, monthly marathon, lunch & learn, self-paced, hackathon, certification, custom)
 - **Clean Apple-style UI** — monochrome + Apple blue, generous whitespace, light + dark mode
@@ -83,7 +83,7 @@ AI-Trainer-Hub/
 │   ├── tokens.css          # Design tokens (light + dark)
 │   └── styles.css          # Component styles
 ├── js/
-│   ├── tracks.js           # 12 capability tracks
+│   ├── tracks.js           # 13 capability tracks
 │   ├── formats.js          # 8 delivery formats
 │   ├── activities.js       # 60+ activities
 │   ├── app.js              # Init, theme, navigation

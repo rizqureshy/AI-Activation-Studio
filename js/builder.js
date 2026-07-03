@@ -676,7 +676,7 @@ function openCustomActivityModal(opts) {
       <div class="ca-head">
         <div class="bracket muted">[ Custom activity · matches catalog format ]</div>
         <h3>Create your own activity</h3>
-        <p class="ca-sub">Fill the form below. The activity will appear alongside the 108 built-ins, ready to add to any program.</p>
+        <p class="ca-sub">Fill the form below. The activity will appear alongside the 140 built-ins, ready to add to any program.</p>
       </div>
 
       <div class="ca-preview" id="ca-preview" aria-hidden="true">

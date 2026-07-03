@@ -10,7 +10,8 @@ const TRACKS = [
   { id: 'customer-intelligence',icon: '🎯', name: 'Customer Intelligence',            desc: 'Sentiment analysis, customer journey mapping, persona building.', audience: 'CS, Sales, CX' },
   { id: 'research-strategy',   icon: '🔍', name: 'Research & Strategy',              desc: 'Market research, competitive analysis, strategic planning.', audience: 'Strategy, Product, BD' },
   { id: 'learning-design',     icon: '🎓', name: 'Learning & Training Design',       desc: 'Course creation, quiz building, knowledge base, onboarding.', audience: 'L&D, HR, Enablement' },
-  { id: 'code-technical',      icon: '💻', name: 'Code & Technical',                 desc: 'Code generation, debugging, documentation, API integration.', audience: 'Engineering, DevOps' }
+  { id: 'code-technical',      icon: '💻', name: 'Code & Technical',                 desc: 'Code generation, debugging, documentation, API integration.', audience: 'Engineering, DevOps' },
+  { id:'ai-in-tools',        icon:'🧰', name:'AI in Tools',                       desc:'Copilot in Outlook, Word, Excel, PowerPoint, Teams — plus Zoom AI. Productivity in the tools you already use.', audience: 'Everyone' }
 ];
 
 if (typeof module !== 'undefined') module.exports = { TRACKS };

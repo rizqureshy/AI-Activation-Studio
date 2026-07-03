@@ -102,6 +102,54 @@
 - **Render check**: verified in the running app (activities catalog) — numbered instructions, deliverables, skills, and tags all display correctly in the expanded detail view.
 - **Compatibility**: no schema changes, no app-code changes — data file only. Saved plans referencing these IDs continue to work (they pick up the improved content automatically).
 
-## Not in scope (flagged for a future pass)
+---
 
-The other seven tracks (Prompt Engineering, Content Generation, Visual Creation, Application Building, Creative & Storytelling, Learning & Training Design, Code & Technical) have the same defect pattern and would benefit from the same treatment — recommended before any program that draws heavily on them.
+# Part 2 — Full-Catalog Pass (all tracks) + Additions
+
+Following sponsor review, the same trainer-grade treatment was applied to the remaining 7 tracks — **with calibrated depth**: beginner activities stay light and satisfying (the lesson from the PA-006/7/8 over-correction); rigor scales with difficulty. Playful tracks (Creative & Storytelling) keep their playfulness.
+
+## Rebalance: AI-skill essence first
+
+The first pass over-indexed on Customer Services framing (tickets, CSAT, renewals, escalations as default examples). Generic tracks now use **varied, cross-functional examples** — sales pipelines, projects, events, budgets — so the AI skill being taught (prompting, verification, iteration) leads, and any team recognizes itself. Customer-specific framing now lives where it belongs: the Customer Intelligence track.
+
+## New track: AI in Tools (8 activities)
+
+Per sponsor request — pure in-tool AI productivity for the apps everyone already uses:
+
+| ID | Activity | Tool | Level |
+|---|---|---|---|
+| TL-001 | Outlook: Taming the Inbox | Outlook Copilot | beginner |
+| TL-002 | Teams: Never Miss a Meeting Again | Teams Copilot | beginner |
+| TL-003 | Word: First Draft in Five Minutes | Word Copilot | beginner |
+| TL-004 | Excel: Talk to Your Spreadsheet | Excel Copilot | intermediate |
+| TL-005 | PowerPoint: Deck from a Doc | PowerPoint Copilot | intermediate |
+| TL-006 | Zoom: AI Companion Co-Pilot | Zoom AI | beginner |
+| TL-007 | The Meeting Lifecycle, End to End | Cross-tool | intermediate |
+| TL-008 | Find It in Seconds | M365 Copilot Chat | intermediate |
+
+Registered in `tracks.js` and wired into the guided-flow recommendations for every focus area.
+
+## New activities added to existing tracks (2 per track, 24 total)
+
+Additions target real gaps — **App Building, Customer Intelligence, Research & Strategy, and Learning Design previously had ZERO beginner activities** (the same structural flaw found in Process Automation):
+
+| Track | Additions |
+|---|---|
+| Prompt Engineering | **Interview Me First** (b) — AI asks you clarifying questions first · **Hallucination Hunt** (i) — elicit confident-wrong answers in your domain, learn the tells |
+| Content Generation | **Jargon Translator** (b) · **Doc Doctor** (i) — diagnose why a doc isn't landing before fixing |
+| Data Analysis | **Explain This Chart** (b) — interrogate reports you usually skim · **What-If Machine** (i) — best/base/worst scenarios with visible math |
+| Visual Creation | **Diagram From Description** (b) · **Slide Makeover** (i) |
+| App Building | **First App in 15 Minutes** (b) — the magic-moment opener · **Change It Till It's Yours** (b) — the iterate loop |
+| Process Automation | **Automation Radar** (b) — log a day, AI flags the automatable moments · **Handoff Fixer** (i) |
+| Presentation | **The Pre-Read** (i) — the one-pager that replaces a meeting · **Difficult Conversation Dry Run** (b) |
+| Creative & Storytelling | **Team Trailer** (i) · **The Win Story** (b) |
+| Customer Intelligence | **One Ticket, Three Lenses** (b) · **Know Your Customer in 10 Minutes** (b) |
+| Research & Strategy | **Five Whys, Fast** (b) · **Steelman It** (b) |
+| Learning & Training Design | **Teach-Back Test** (b) — Feynman technique, perfect for train-the-trainer · **Icebreaker Engine** (b) |
+| Code & Technical | **Explain This Code to Me** (b) — for non-devs who inherited scripts · **Error Message Whisperer** (b) |
+
+## New catalog shape
+
+**140 activities · 13 tracks.** Every track now has beginner on-ramps. Landing copy, README, builder copy, and catalog copy updated from 108/12 to 140/13. All existing IDs preserved; saved plans unaffected.
+
+Validated the same way as Part 1: programmatic integrity checks (unique IDs, valid tracks/difficulties, all fields), plus rendering verification in the running app (activities list, expanded details, builder track selection).

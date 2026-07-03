@@ -46,7 +46,7 @@ function renderCatHub() {
           </div>
           <div class="res-tile-tag">[ 01 · Hands-on ]</div>
           <h3 class="res-tile-title">Activities</h3>
-          <p class="res-tile-sub">Short prompt-and-build challenges your team can complete in 5–30 minutes. Across 12 capability tracks. Each one ships with instructions, deliverable, and skills built.</p>
+          <p class="res-tile-sub">Short prompt-and-build challenges your team can complete in 5–30 minutes. Across 13 capability tracks. Each one ships with instructions, deliverable, and skills built.</p>
           <div class="res-tile-cta">Browse activities <span class="arrow">→</span></div>
         </button>
 

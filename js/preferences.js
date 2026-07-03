@@ -187,14 +187,14 @@ function derivePreferences(a) {
 
   // Tracks from focus area
   const trackMap = {
-    sales:          ['prompt-engineering','content-generation','customer-intelligence','presentation'],
-    cs:             ['prompt-engineering','content-generation','customer-intelligence','process-automation'],
-    marketing:      ['prompt-engineering','content-generation','visual-creation','customer-intelligence'],
-    data:           ['prompt-engineering','data-analysis','process-automation','content-generation'],
-    insights:       ['prompt-engineering','data-analysis','presentation','content-generation'],
+    sales:          ['prompt-engineering','ai-in-tools','content-generation','customer-intelligence','presentation'],
+    cs:             ['prompt-engineering','ai-in-tools','content-generation','customer-intelligence','process-automation'],
+    marketing:      ['prompt-engineering','ai-in-tools','content-generation','visual-creation','customer-intelligence'],
+    data:           ['prompt-engineering','ai-in-tools','data-analysis','process-automation','content-generation'],
+    insights:       ['prompt-engineering','ai-in-tools','data-analysis','presentation','content-generation'],
     transformation: ['prompt-engineering','research-strategy','presentation','learning-design','content-generation'],
-    leaders:        ['prompt-engineering','research-strategy','presentation','content-generation'],
-    mixed:          ['prompt-engineering','content-generation','data-analysis','application-building']
+    leaders:        ['prompt-engineering','ai-in-tools','research-strategy','presentation','content-generation'],
+    mixed:          ['prompt-engineering','ai-in-tools','content-generation','data-analysis','application-building']
   };
   const tracks = trackMap[a.focus] || trackMap.mixed;
 
