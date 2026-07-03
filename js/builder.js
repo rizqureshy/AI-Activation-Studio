@@ -244,10 +244,6 @@ function renderStep2() {
       if (state.tracks[id]?.selected) {
         state.tracks[id].selected = false;
       } else {
-        if (selectedTracks().length >= 5) {
-          toast('You can pick at most 5 tracks.');
-          return;
-        }
         state.tracks[id] = { selected: true, difficulty: state.tracks[id]?.difficulty || 'mixed' };
       }
       renderStep2();
@@ -270,7 +266,7 @@ function updateTrackSummary() {
   if (!el) return;
   el.innerHTML = `
     <span>${sel.length} track${sel.length===1?'':'s'} selected · ~${available.length} activities available</span>
-    <span style="color:var(--text-muted)">Min 1 · Max 5</span>
+    <span style="color:var(--text-muted)">Min 1 · select as many as you like</span>
   `;
 }
 
@@ -288,7 +284,6 @@ function filteredActivities() {
 function applyRecommendedTracks() {
   const recs = recommendedTracks();
   recs.forEach(id => {
-    if (selectedTracks().length >= 5) return;
     if (!state.tracks[id]?.selected) {
       state.tracks[id] = { selected: true, difficulty: state.tracks[id]?.difficulty || 'mixed' };
     }
@@ -426,7 +421,7 @@ function renderSchedule() {
       const req = item.required === 'mandatory' ? 'mandatory' : 'optional';
       const reqLabel = req === 'mandatory' ? 'Mandatory' : 'Optional';
       return `
-        <div class="schedule-slot filled diff-${a.difficulty} req-${req}" draggable="true" data-i="${i}">
+        <div class="schedule-slot filled diff-${a.difficulty} req-${req}" draggable="true" data-i="${i}" data-aid="${a.id}" title="Click to view activity details">
           <div class="drag-handle" title="Drag to reorder">⋮⋮</div>
           <div class="slot-day">${slot.label}</div>
           <div class="slot-content">
@@ -447,6 +442,14 @@ function renderSchedule() {
   }).join('');
   list.querySelectorAll('.slot-remove').forEach(btn => {
     btn.addEventListener('click', e => { e.stopPropagation(); state.schedule.splice(+btn.dataset.i, 1); renderStep3(); });
+  });
+  // Scheduled items stay readable — click anywhere on the card (except
+  // its controls) to open the same detail modal as the library list.
+  list.querySelectorAll('.schedule-slot.filled').forEach(el => {
+    el.addEventListener('click', e => {
+      if (e.target.closest('.drag-handle, .slot-remove, .req-toggle')) return;
+      showActivityModal(el.dataset.aid);
+    });
   });
   attachScheduleDnd(list);
 }

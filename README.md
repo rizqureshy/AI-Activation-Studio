@@ -15,7 +15,7 @@ AI Activation Studio is a browser-based command center for trainers running an A
 
 **Program Builder** (design the program):
 1. **Define** — name, audience, delivery format, start date.
-2. **Tracks** — pick 1–5 capability tracks, set difficulty.
+2. **Tracks** — pick any number of capability tracks, set difficulty.
 3. **Curate** — auto-fill or hand-pick activities; attach learning resources from the catalog.
 4. **Preview** — see exactly what your learners will see.
 5. **Export** — HTML site, ZIP repo, PDF guide, PowerPoint deck, or JSON backup.

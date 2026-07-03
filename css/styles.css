@@ -1899,8 +1899,9 @@ body::before, body::after { content: none; }
   border-radius: var(--radius);
 }
 .schedule-slot.empty { border-style: dashed; background: transparent; color: var(--text-soft); font-style: italic; font-size: 13px; }
-.schedule-slot.filled { cursor: grab; }
-.schedule-slot.filled:active { cursor: grabbing; }
+.schedule-slot.filled { cursor: pointer; }
+.schedule-slot.filled .drag-handle { cursor: grab; }
+.schedule-slot.filled .drag-handle:active { cursor: grabbing; }
 .schedule-slot.dragging { opacity: 0.4; transform: scale(0.98); }
 .schedule-slot.drag-over { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
 .drag-handle { color: var(--text-soft); user-select: none; font-size: 14px; flex-shrink: 0; opacity: 0.5; }
