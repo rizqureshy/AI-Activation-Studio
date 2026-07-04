@@ -3745,9 +3745,9 @@ body::before, body::after { content: none; }
   transition: transform 0.65s var(--easing-out);
 }
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
-/* Hover peek — the card visibly tilts in 3D so users discover it flips */
-.flip-card:hover:not(.flipped) .flip-inner { transform: rotateY(-16deg); }
-.flip-card.flipped:hover .flip-inner { transform: rotateY(164deg); }
+/* Hover peek — a subtle 3D tilt so users discover the card flips */
+.flip-card:hover:not(.flipped) .flip-inner { transform: rotateY(-8deg); }
+.flip-card.flipped:hover .flip-inner { transform: rotateY(172deg); }
 
 .flip-face {
   position: absolute;
