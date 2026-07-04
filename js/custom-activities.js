@@ -19,7 +19,7 @@ const CUSTOM_PROGRAMS = [
     icon: '🚀',
     label: 'AI April',
     status: 'completed',
-    description: 'The original 30-day AI challenge month — the program the Studio\'s playbook and launch kit were built from. Activity set being imported; the program shell is ready to receive it.'
+    description: 'The original AI challenge month — 22 daily challenges across five weeks, April 1–30. Mon–Thu light and playful, Friday flagship challenges mandatory in the original run. This is the program the Studio\'s playbook and launch kit were built from.'
   }
 ];
 
@@ -73,6 +73,182 @@ const CUSTOM_ACTIVITIES = [
     submission: 'Four parts: (1) your AI-assisted read of what\'s really going on, (2) your recommended path with rationale, (3) one stakeholder communication for the most important audience, (4) a one-page reflection — where AI helped you think better, where it led you astray, and where human judgment was irreplaceable. Post all four.',
     proTip: 'Start with an unfiltered brain dump — paste everything you know about the situation in one go, then ask AI to structure what matters most BEFORE touching solutions. That clarity is what separates the best submissions.',
     realSkill: 'End-to-end AI-assisted judgment — not just production, navigation. You\'re building a repeatable thinking process you can use and teach for the rest of your career.'
+  },
+  {
+    id: 'AA-D01', program: 'ai-april', group: 'Week 1 — Apr 1–3 · 3-Day Kickoff', track: 'creative-storytelling', difficulty: 'beginner',
+    day: 'WED', requirement: 'optional', emoji: '🦸', timeEstimate: 15,
+    title: 'AI Alter Ego',
+    hook: 'Your professional bio, but make it superhero.',
+    mission: 'Rewrite your professional bio as a superhero origin story — your superpower, your origin moment, and your nemesis. Have Copilot reformat it as a LinkedIn post.',
+    submission: 'Share both versions — the origin story and the LinkedIn post.'
+  },
+  {
+    id: 'AA-D02', program: 'ai-april', group: 'Week 1 — Apr 1–3 · 3-Day Kickoff', track: 'visual-creation', difficulty: 'beginner',
+    day: 'THU', requirement: 'optional', emoji: '🎨', timeEstimate: 15,
+    title: 'Triple Style Portrait',
+    hook: 'Same you, three wildly different art styles.',
+    mission: 'Generate yourself in 3 wildly different art styles using Copilot Designer: watercolour, cyberpunk neon, and Renaissance oil painting. Same description, only the style tag changes.',
+    submission: 'The 3 portraits with the prompts used.'
+  },
+  {
+    id: 'AA-D03', program: 'ai-april', group: 'Week 1 — Apr 1–3 · 3-Day Kickoff', track: 'presentation', difficulty: 'intermediate',
+    day: 'FRI', requirement: 'mandatory', emoji: '📊', timeEstimate: 45,
+    title: 'AI Strategy Deck',
+    hook: 'Friday flagship: the AI-in-our-team strategy deck.',
+    mission: 'Build a 6-slide "AI in Our Team" strategy deck using Copilot in PowerPoint. Must include: Current State, AI Opportunity, 3 Recommended Tools with use cases, Implementation Roadmap, Risks & Mitigations, and Success Metrics. Use Copilot to write every slide, then add speaker notes.',
+    submission: 'The final 6-slide deck with speaker notes.'
+  },
+  {
+    id: 'AA-D04', program: 'ai-april', group: 'Week 2 — Apr 6–10 · First Full Week', track: 'content-generation', difficulty: 'beginner',
+    day: 'MON', requirement: 'optional', emoji: '🎭', timeEstimate: 15,
+    title: 'Tone Tornado',
+    hook: 'One late-email, five outrageous tones.',
+    mission: 'Write one email saying you’ll be 5 minutes late. Have AI rewrite it in 5 very different tones: Shakespearean, passive-aggressive, Gen Z, corporate buzzword soup, and pirate.',
+    submission: 'All 5 versions.'
+  },
+  {
+    id: 'AA-D05', program: 'ai-april', group: 'Week 2 — Apr 6–10 · First Full Week', track: 'visual-creation', difficulty: 'intermediate',
+    day: 'TUE', requirement: 'optional', emoji: '🌌', timeEstimate: 20,
+    title: 'Alternate Universe Office',
+    hook: 'Your office, three alternate realities.',
+    mission: 'Generate your workplace reimagined in 3 alternate realities using Copilot Designer: underwater research lab, medieval castle, and space station. Should feel like the same place — different universe.',
+    submission: 'The 3 images.'
+  },
+  {
+    id: 'AA-D06', program: 'ai-april', group: 'Week 2 — Apr 6–10 · First Full Week', track: 'creative-storytelling', difficulty: 'intermediate',
+    day: 'WED', requirement: 'optional', emoji: '🎸', timeEstimate: 20,
+    title: 'Mood Soundtrack',
+    hook: 'Three work moods, three AI-generated tracks.',
+    mission: 'Generate 3 music tracks for 3 work scenarios: deep focus session, Friday afternoon wind-down, and a high-pressure incident. One Gemini prompt each.',
+    submission: 'The 3 tracks + which prompt captured its mood best.'
+  },
+  {
+    id: 'AA-D07', program: 'ai-april', group: 'Week 2 — Apr 6–10 · First Full Week', track: 'process-automation', difficulty: 'intermediate',
+    day: 'THU', requirement: 'optional', emoji: '🔄', timeEstimate: 25,
+    title: 'Process Flow Animation',
+    hook: 'Turn a 5-step process into an animated flowchart.',
+    mission: 'Describe any 5-step work process to Claude. Ask it to build an animated HTML flowchart where each step reveals in sequence with smooth transitions. Must be click-through interactive.',
+    submission: 'The working interactive flowchart.'
+  },
+  {
+    id: 'AA-D08', program: 'ai-april', group: 'Week 2 — Apr 6–10 · First Full Week', track: 'application-building', difficulty: 'advanced',
+    day: 'FRI', requirement: 'mandatory', emoji: '📈', timeEstimate: 60,
+    title: 'Live Team Dashboard',
+    hook: 'Friday flagship: a live team ops dashboard.',
+    mission: 'Build a fully functional live team operations dashboard using Claude Artifacts. Must include: at least 4 chart types, animated metrics, status indicators, and a team progress tracker. Use ChatGPT to design the data story first, then Claude to build the live app.',
+    submission: 'The live dashboard — polished enough to show leadership.'
+  },
+  {
+    id: 'AA-D09', program: 'ai-april', group: 'Week 3 — Apr 13–17 · Storytelling, Data & Multi-Tool', track: 'content-generation', difficulty: 'intermediate',
+    day: 'MON', requirement: 'optional', emoji: '📢', timeEstimate: 20,
+    title: 'Content Multiplier',
+    hook: 'One idea, five formats, one session.',
+    mission: 'Take one real idea from your current project. Expand it into 5 formats in a single AI session: a tweet thread, a LinkedIn post, an internal email, a meeting talking point, and a one-pager headline.',
+    submission: 'All 5 formats.'
+  },
+  {
+    id: 'AA-D10', program: 'ai-april', group: 'Week 3 — Apr 13–17 · Storytelling, Data & Multi-Tool', track: 'creative-storytelling', difficulty: 'intermediate',
+    day: 'TUE', requirement: 'optional', emoji: '🌟', timeEstimate: 25,
+    title: 'Your Origin Story',
+    hook: 'Your career as a 4-panel graphic novel.',
+    mission: 'Write your professional journey — how you got here — using ChatGPT. Illustrate it as a 4-panel graphic novel with DALL·E. Each panel must match a real scene from your story.',
+    submission: 'The 4-panel graphic novel.'
+  },
+  {
+    id: 'AA-D11', program: 'ai-april', group: 'Week 3 — Apr 13–17 · Storytelling, Data & Multi-Tool', track: 'creative-storytelling', difficulty: 'intermediate',
+    day: 'WED', requirement: 'optional', emoji: '🎤', timeEstimate: 25,
+    title: 'AI Original Song',
+    hook: 'Write the song. Generate the music. Submit both.',
+    mission: 'Write full original lyrics about your job, team, or project with ChatGPT — pick a real genre, include verse, chorus, and bridge. Then use Gemini to generate the actual music.',
+    submission: 'Both — the lyrics and the track.'
+  },
+  {
+    id: 'AA-D12', program: 'ai-april', group: 'Week 3 — Apr 13–17 · Storytelling, Data & Multi-Tool', track: 'creative-storytelling', difficulty: 'intermediate',
+    day: 'THU', requirement: 'optional', emoji: '📅', timeEstimate: 25,
+    title: 'Animated Project Timeline',
+    hook: 'A project timeline that draws itself.',
+    mission: 'Give Claude a real or fictional project with 6 milestones and dates. Ask it to build an animated horizontal timeline that draws itself left to right with milestone labels and status indicators.',
+    submission: 'The animated timeline.'
+  },
+  {
+    id: 'AA-D13', program: 'ai-april', group: 'Week 3 — Apr 13–17 · Storytelling, Data & Multi-Tool', track: 'presentation', difficulty: 'advanced',
+    day: 'FRI', requirement: 'mandatory', emoji: '🎬', timeEstimate: 60,
+    title: 'AI-Powered Project Pitch',
+    hook: 'Friday flagship: the four-format project pitch.',
+    mission: 'Create a complete multi-format pitch for a real initiative from your work: (1) a polished 5-slide Copilot PPT deck, (2) a 60-second explainer video script with storyboard (ChatGPT), (3) an animated process workflow diagram (Claude), and (4) a Gemini-generated music track for the presentation.',
+    submission: 'All four deliverables, submitted together.'
+  },
+  {
+    id: 'AA-D14', program: 'ai-april', group: 'Week 4 — Apr 22–25 · Build Week', track: 'data-analysis', difficulty: 'intermediate',
+    day: 'MON', requirement: 'optional', emoji: '📊', timeEstimate: 20,
+    title: 'Chart from Chaos',
+    hook: 'Raw data in, three charts and an insight out.',
+    mission: 'Take any raw data from your work (or invent realistic data). Use Copilot in Excel to generate 3 different chart types.',
+    submission: 'All 3 charts with a one-line insight each — let the data speak.'
+  },
+  {
+    id: 'AA-D15', program: 'ai-april', group: 'Week 4 — Apr 22–25 · Build Week', track: 'data-analysis', difficulty: 'intermediate',
+    day: 'TUE', requirement: 'optional', emoji: '🔢', timeEstimate: 25,
+    title: 'Formula Wizard',
+    hook: 'Three formulas you genuinely need, written for you.',
+    mission: 'Describe 3 Excel calculations you genuinely need at work. Use Copilot to write the formulas, explain them in plain English, and demonstrate them on sample data.',
+    submission: 'The results — formulas, explanations, demos.'
+  },
+  {
+    id: 'AA-D16', program: 'ai-april', group: 'Week 4 — Apr 22–25 · Build Week', track: 'application-building', difficulty: 'intermediate',
+    day: 'WED', requirement: 'optional', emoji: '💬', timeEstimate: 30,
+    title: 'Standup Bot',
+    hook: 'A standup assistant that formats and copies for you.',
+    mission: 'Build a daily standup assistant — asks the 3 standup questions one by one, collects answers, formats and copies a clean post to clipboard. Ready to paste straight into Slack or Teams.',
+    submission: 'The working standup bot.'
+  },
+  {
+    id: 'AA-D17', program: 'ai-april', group: 'Week 4 — Apr 22–25 · Build Week', track: 'visual-creation', difficulty: 'intermediate',
+    day: 'THU', requirement: 'optional', emoji: '📦', timeEstimate: 25,
+    title: 'Product Concept Art',
+    hook: 'Three plausible products that don’t exist — yet.',
+    mission: 'Invent 3 products from your industry that don’t yet exist. Generate professional concept art for each with Copilot Designer. Must look plausible and launchable — not joke items.',
+    submission: 'The 3 concept-art pieces.'
+  },
+  {
+    id: 'AA-D18', program: 'ai-april', group: 'Week 4 — Apr 22–25 · Build Week', track: 'application-building', difficulty: 'advanced',
+    day: 'FRI', requirement: 'mandatory', emoji: '🛠️', timeEstimate: 60,
+    title: 'Vibe Code a Real Work Tool',
+    hook: 'Friday flagship: ship a real tool at a live URL.',
+    mission: 'Build and ship a fully functional app that solves a real problem your team faces — using Lovable.dev, Base44, or Replit. Must be live at a shareable URL.',
+    submission: 'The live link + a 3-sentence explanation of the problem it solves and who it helps.'
+  },
+  {
+    id: 'AA-D19', program: 'ai-april', group: 'Week 5 — Apr 27–30 · Final Week', track: 'content-generation', difficulty: 'intermediate',
+    day: 'MON', requirement: 'optional', emoji: '📋', timeEstimate: 20,
+    title: 'Meeting Recap Machine',
+    hook: 'Chaos notes in — summary, actions, email out.',
+    mission: 'Paste your roughest, most chaotic meeting notes into ChatGPT or Copilot. Extract: a clean 5-line summary, 5 action items with owners, and a ready-to-send follow-up email — all from the same messy input.',
+    submission: 'All three artifacts.'
+  },
+  {
+    id: 'AA-D20', program: 'ai-april', group: 'Week 5 — Apr 27–30 · Final Week', track: 'creative-storytelling', difficulty: 'intermediate',
+    day: 'TUE', requirement: 'optional', emoji: '🔮', timeEstimate: 25,
+    title: 'Industry Fable',
+    hook: 'Your industry, five years out, as a fable.',
+    mission: 'Write a short fable set in your industry 5 years from now. Characters: the innovator, the skeptic, the manager, the intern. Illustrate 2 key scenes and each character with DALL·E.',
+    submission: 'The fable + illustrations.'
+  },
+  {
+    id: 'AA-D21', program: 'ai-april', group: 'Week 5 — Apr 27–30 · Final Week', track: 'application-building', difficulty: 'advanced',
+    day: 'WED', requirement: 'optional', emoji: '📡', timeEstimate: 30,
+    title: 'Live Ops Dashboard',
+    hook: 'A dashboard that looks like a real monitoring screen.',
+    mission: 'Ask Claude to build an animated operations dashboard — live-updating metrics, pulsing status indicators, filling progress bars. Must look like a real monitoring screen, not a static wireframe.',
+    submission: 'The animated dashboard.'
+  },
+  {
+    id: 'AA-D22', program: 'ai-april', group: 'Week 5 — Apr 27–30 · Final Week', track: 'application-building', difficulty: 'intermediate',
+    day: 'THU', requirement: 'optional', emoji: '🌐', timeEstimate: 25,
+    title: 'Clickable Org Chart',
+    hook: 'An org chart people can actually click.',
+    mission: 'Describe your team structure to Claude. Ask it to build an animated org chart where clicking any person expands their role and responsibilities. Must be at least 3 levels deep.',
+    submission: 'The clickable org chart.'
   }
 ];
 
@@ -92,7 +268,7 @@ function customSetActivities() {
       difficulty: a.difficulty,
       timeEstimate: a.timeEstimate,
       description: a.hook,
-      detailedInstructions: a.mission + ' Pro tip: ' + a.proTip,
+      detailedInstructions: a.mission + (a.proTip ? ' Pro tip: ' + a.proTip : ''),
       deliverable: a.submission,
       skillsBuilt: [],
       tags: [prog ? prog.label : a.program, a.group].filter(Boolean),
@@ -192,8 +368,8 @@ function customActivityCard(a) {
           <div class="cu-back-scroll">
             <div class="cu-sec"><h4>The mission</h4><p>${escapeHtml(a.mission)}</p></div>
             <div class="cu-sec"><h4>Your submission</h4><p>${escapeHtml(a.submission)}</p></div>
-            <div class="cu-sec tip"><h4>💡 Pro tip</h4><p>${escapeHtml(a.proTip)}</p></div>
-            <div class="cu-sec skill"><h4>The real skill</h4><p>${escapeHtml(a.realSkill)}</p></div>
+            ${a.proTip ? `<div class="cu-sec tip"><h4>💡 Pro tip</h4><p>${escapeHtml(a.proTip)}</p></div>` : ''}
+            ${a.realSkill ? `<div class="cu-sec skill"><h4>The real skill</h4><p>${escapeHtml(a.realSkill)}</p></div>` : ''}
           </div>
           <span class="cu-flip-btn back">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v4h-4"/></svg>
@@ -234,8 +410,8 @@ function _customSetStaticHTML(progId) {
       <p class="hook">${esc(a.hook)}</p>
       <div class="sec"><h3>The mission</h3><p>${esc(a.mission)}</p></div>
       <div class="sec"><h3>Your submission</h3><p>${esc(a.submission)}</p></div>
-      <div class="sec tip"><h3>💡 Pro tip</h3><p>${esc(a.proTip)}</p></div>
-      <div class="sec"><h3>The real skill</h3><p>${esc(a.realSkill)}</p></div>
+      ${a.proTip ? `<div class="sec tip"><h3>💡 Pro tip</h3><p>${esc(a.proTip)}</p></div>` : ''}
+      ${a.realSkill ? `<div class="sec"><h3>The real skill</h3><p>${esc(a.realSkill)}</p></div>` : ''}
     </div>`;
   };
   return `<!DOCTYPE html>
