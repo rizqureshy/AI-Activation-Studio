@@ -3853,6 +3853,52 @@ body::before, body::after { content: none; }
 .cu-sec.tip { background: var(--accent-soft); border-radius: var(--radius); padding: 8px 10px; }
 .flip-back .cu-flip-btn { flex: 0 0 auto; margin-top: 10px; align-self: flex-start; }
 
+/* Program status + group headings + default chip + empty state */
+.prog-status {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  vertical-align: 3px;
+  margin-left: 6px;
+}
+.prog-status.running   { color: var(--emerald); border: 1px solid var(--emerald); background: var(--emerald-soft); }
+.prog-status.completed { color: var(--text-soft); border: 1px solid var(--border-strong); }
+.cs-group {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin: 18px 0 12px;
+  padding-left: 9px;
+  border-left: 3px solid var(--accent);
+}
+.cs-empty {
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 13.5px;
+}
+.cu-def {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  color: var(--text-soft);
+  border: 1px dashed var(--border-strong);
+  white-space: nowrap;
+}
+.cu-def.mandatory { color: var(--amber); border: 1px solid var(--amber); background: var(--amber-soft); font-weight: 700; }
+.set-tag { white-space: nowrap; }
+
 /* Category header action buttons */
 .cs-cat-actions { display: flex; gap: 8px; flex: 0 0 auto; align-self: flex-start; }
 @media (max-width: 640px) { .cs-cat-actions { width: 100%; } }

@@ -392,7 +392,7 @@ function renderActivityList() {
     <div class="activity-item diff-${a.difficulty} ${scheduled.has(a.id)?'in-schedule':''}" data-id="${a.id}">
       <div class="activity-emoji">${a.emoji}</div>
       <div class="activity-body">
-        <div class="activity-title">${a.title}</div>
+        <div class="activity-title">${a.title}${a.fromProgram ? ` <span class="custom-tag set-tag" title="From a program set — default: ${a.defaultRequired}">${a.fromProgramIcon} set</span>` : ''}</div>
         <div class="activity-meta">
           <span class="diff-stars diff-${a.difficulty}">${diffStars(a.difficulty)}</span>
           · ${a.timeEstimate}m · ${trackName(a.track)}
@@ -514,7 +514,8 @@ function addToSchedule(id) {
     toast('Already in schedule.');
     return;
   }
-  state.schedule.push({ activityId: id, required: 'optional' });
+  const act = findActivity(id);
+  state.schedule.push({ activityId: id, required: act?.defaultRequired || 'optional' });
   renderStep3();
 }
 
@@ -589,7 +590,7 @@ function autoFill() {
   const diffOrder = { beginner: 0, intermediate: 1, advanced: 2 };
   interleaved.sort((a, b) => diffOrder[a.difficulty] - diffOrder[b.difficulty]);
 
-  state.schedule = interleaved.slice(0, target).map(a => ({ activityId: a.id, required: 'optional' }));
+  state.schedule = interleaved.slice(0, target).map(a => ({ activityId: a.id, required: a.defaultRequired || 'optional' }));
   renderStep3();
   toast(`Auto-filled ${state.schedule.length} activities.`);
 }

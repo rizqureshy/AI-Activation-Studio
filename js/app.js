@@ -16,7 +16,10 @@ const state = {
 };
 
 function allActivities() {
-  return ACTIVITIES.concat(state.customActivities);
+  // Built-ins + curated program sets (pullable into any program) + the
+  // user's own custom activities.
+  const sets = (typeof customSetActivities === 'function') ? customSetActivities() : [];
+  return ACTIVITIES.concat(sets, state.customActivities);
 }
 function findActivity(id) {
   return allActivities().find(a => a.id === id);
