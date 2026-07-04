@@ -3688,6 +3688,177 @@ body::before, body::after { content: none; }
 }
 
 /* ════════════════════════════════════════════════════════════════
+   CUSTOM ACTIVITIES — curated sets with categories + flip cards
+   ════════════════════════════════════════════════════════════════ */
+
+.cs-cat { margin-bottom: 48px; }
+.cs-cat-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.cs-cat-icon {
+  font-size: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: var(--accent-soft);
+  border: 1px solid var(--border-glow);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+.cs-cat-title { font-size: 20px; letter-spacing: -0.01em; margin-bottom: 4px; }
+.cs-cat-sub { color: var(--text-muted); font-size: 13.5px; max-width: 640px; line-height: 1.5; }
+.cs-cat-count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  white-space: nowrap;
+  padding-top: 6px;
+}
+
+/* ── Flip cards ── */
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.flip-card {
+  perspective: 1400px;
+  height: 400px;
+  cursor: pointer;
+  outline: none;
+}
+.flip-card:focus-visible .flip-inner { box-shadow: var(--shadow-glow); border-radius: var(--radius-xl); }
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s var(--easing-out);
+}
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  /* Solid surface — backdrop-filter breaks preserve-3d backface
+     rendering in Chromium (the flipped card vanishes) */
+  background: var(--surface-alt);
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  overflow: hidden;
+}
+.flip-front { align-items: flex-start; }
+.flip-back { transform: rotateY(180deg); background: var(--surface-elev); }
+
+/* Front */
+.cu-top { display: flex; align-items: center; gap: 8px; width: 100%; margin-bottom: 14px; }
+.cu-day {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+}
+.cu-day-mon .cu-day { color: var(--violet);  border-color: var(--violet);  background: var(--violet-soft); }
+.cu-day-tue .cu-day { color: var(--sky);     border-color: var(--sky);     background: var(--sky-soft); }
+.cu-day-wed .cu-day { color: var(--amber);   border-color: var(--amber);   background: var(--amber-soft); }
+.cu-day-thu .cu-day { color: var(--pink);    border-color: var(--pink);    background: var(--pink-soft); }
+.cu-day-fri .cu-day { color: var(--emerald); border-color: var(--emerald); background: var(--emerald-soft); }
+.cu-req {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+}
+.cu-req.optional  { color: var(--text-soft); border: 1px dashed var(--border-strong); }
+.cu-req.mandatory { color: var(--danger); border: 1px solid var(--danger); background: var(--danger-soft); font-weight: 700; }
+
+.cu-emoji { font-size: 40px; margin-bottom: 12px; }
+.cu-title { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 8px; }
+.cu-hook { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
+.cu-meta {
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+.cu-meta-row { display: flex; align-items: center; gap: 6px; }
+.cu-flip-hint {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.75;
+}
+
+/* Back */
+.cu-back-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  flex: 0 0 auto;
+}
+.cu-back-day { margin-left: auto; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.16em; color: var(--text-soft); }
+.cu-back-scroll {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  padding-right: 6px;
+  scrollbar-width: thin;
+}
+.cu-sec { margin-bottom: 12px; }
+.cu-sec h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin-bottom: 4px;
+}
+.cu-sec p { font-size: 12.5px; line-height: 1.55; color: var(--text); }
+.cu-sec.tip p, .cu-sec.skill p { color: var(--text-muted); font-size: 12px; }
+.cu-sec.tip { background: var(--accent-soft); border-radius: var(--radius); padding: 8px 10px; }
+.flip-back .cu-flip-hint { flex: 0 0 auto; margin-top: 10px; }
+
+@media (max-width: 1000px) { .flip-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  {
+  .flip-grid { grid-template-columns: 1fr; }
+  .flip-card { height: 380px; }
+  .cs-cat-count { display: none; }
+}
+
+/* ════════════════════════════════════════════════════════════════
    SPLASH INTRO — "Welcome to the future of AI Activation"
    Once per session. Gated pre-paint by an inline <head> script that
    sets <html data-splash="pending">; choreographed by js/splash.js.

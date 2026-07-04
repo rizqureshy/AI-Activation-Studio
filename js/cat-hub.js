@@ -27,12 +27,12 @@ function renderCatHub() {
           <h1 class="sh-title">Browse the <span class="accent">full library</span>.</h1>
           <p class="sh-sub">Two collections — hands-on activities your team can run, and external learning resources you can point them to. Pick one to explore.</p>
         </div>
-        <div class="sh-meta"><b>${ACTIVITIES.length + CATALOG.length}</b>total items</div>
+        <div class="sh-meta"><b>${ACTIVITIES.length + CATALOG.length + (typeof CUSTOM_ACTIVITIES !== 'undefined' ? CUSTOM_ACTIVITIES.length : 0)}</b>total items</div>
       </div>
     </section>
 
     <div class="wrap" style="padding-top: 40px; padding-bottom: 80px;">
-      <div class="res-tile-grid" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div class="res-tile-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
 
         <button class="res-tile" onclick="openActivities()">
           <div class="res-tile-head">
@@ -64,6 +64,22 @@ function renderCatHub() {
           <h3 class="res-tile-title">Learnings</h3>
           <p class="res-tile-sub">Vetted videos, courses, and labs from LinkedIn Learning, DeepLearning.AI, Anthropic, OpenAI, IBM, NVIDIA and more. Free, trial, or LinkedIn Learning included.</p>
           <div class="res-tile-cta">Browse learnings <span class="arrow">→</span></div>
+        </button>
+
+        <button class="res-tile" onclick="openCustomActivities()">
+          <div class="res-tile-head">
+            <div class="res-tile-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/><path d="M19 15l.9 2.6L22 18l-2.1.4L19 21l-.9-2.6L16 18l2.1-.4z"/></svg>
+            </div>
+            <div class="res-tile-progress">
+              <span class="rtp-count">${typeof CUSTOM_ACTIVITIES !== 'undefined' ? CUSTOM_ACTIVITIES.length : 0}</span>
+              <span class="rtp-label">curated</span>
+            </div>
+          </div>
+          <div class="res-tile-tag">[ 03 · Curated sets ]</div>
+          <h3 class="res-tile-title">Custom Activities</h3>
+          <p class="res-tile-sub">Purpose-built activity sets for specific programs and cohorts, organized by category. Flip any card to read the full brief — mission, submission, pro tip, and the real skill.</p>
+          <div class="res-tile-cta">Browse custom sets <span class="arrow">→</span></div>
         </button>
 
       </div>
