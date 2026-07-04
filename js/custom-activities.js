@@ -98,6 +98,10 @@ function renderCustomActivities() {
                 <p class="cs-cat-sub">${escapeHtml(cat.description)}</p>
               </div>
               <span class="cs-cat-count">${items.length} activities</span>
+              <div class="cs-cat-actions">
+                <button class="btn small ghost" onclick="exportCustomSetHTML('${cat.id}')" title="Download this set as a standalone HTML page (long-card layout)">⬇ Export HTML</button>
+                <button class="btn small ghost" onclick="printCustomSet('${cat.id}')" title="Open a print-ready view — save as PDF from the print dialog">🖨 Print / PDF</button>
+              </div>
             </div>
             <div class="flip-grid">
               ${items.map(customActivityCard).join('')}
@@ -126,7 +130,10 @@ function customActivityCard(a) {
             <span>${track ? track.icon + ' ' + track.name : ''}</span>
             <span class="cu-meta-row"><span class="diff-pill diff-${a.difficulty}">★★★ ${a.difficulty}</span> · ${a.timeEstimate} min</span>
           </div>
-          <div class="cu-flip-hint">Flip for the full brief ⟲</div>
+          <span class="cu-flip-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg>
+            Flip for the full brief
+          </span>
         </div>
         <div class="flip-face flip-back">
           <div class="cu-back-head">
@@ -139,11 +146,112 @@ function customActivityCard(a) {
             <div class="cu-sec tip"><h4>💡 Pro tip</h4><p>${escapeHtml(a.proTip)}</p></div>
             <div class="cu-sec skill"><h4>The real skill</h4><p>${escapeHtml(a.realSkill)}</p></div>
           </div>
-          <div class="cu-flip-hint">Flip back ⟲</div>
+          <span class="cu-flip-btn back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v4h-4"/></svg>
+            Flip back
+          </span>
         </div>
       </div>
     </div>
   `;
+}
+
+// ── Static exports — long cards, no flipping in static media ────
+// Used for the downloadable HTML and the print/PDF view: every card
+// is rendered full-length with the complete brief laid out flat.
+function _customSetStaticHTML(catId) {
+  const cat = CUSTOM_CATEGORIES.find(c => c.id === catId);
+  const items = CUSTOM_ACTIVITIES.filter(a => a.category === catId);
+  const esc = s => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+  const dayColors = { MON:'#7C3AED', TUE:'#0EA5E9', WED:'#F59E0B', THU:'#EC4899', FRI:'#10B981' };
+  const card = a => {
+    const track = TRACKS.find(t => t.id === a.track);
+    const dc = dayColors[a.day] || '#7C3AED';
+    return `
+    <div class="card">
+      <div class="card-head">
+        <span class="day" style="color:${dc}; border-color:${dc}; background:${dc}14">${esc(a.day)}</span>
+        <span class="emoji">${a.emoji}</span>
+        <div class="titles">
+          <h2>${esc(a.title)}</h2>
+          <div class="meta">${track ? track.icon + ' ' + esc(track.name) : ''} · ★★★ ${esc(a.difficulty)} · ${a.timeEstimate} min</div>
+        </div>
+      </div>
+      <p class="hook">${esc(a.hook)}</p>
+      <div class="sec"><h3>The mission</h3><p>${esc(a.mission)}</p></div>
+      <div class="sec"><h3>Your submission</h3><p>${esc(a.submission)}</p></div>
+      <div class="sec tip"><h3>💡 Pro tip</h3><p>${esc(a.proTip)}</p></div>
+      <div class="sec"><h3>The real skill</h3><p>${esc(a.realSkill)}</p></div>
+    </div>`;
+  };
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(cat.label)} — Custom Activities</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Helvetica Neue", Arial, sans-serif; color: #14152B; background: #FAFAFC; padding: 40px 20px; line-height: 1.5; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  .head { display: flex; align-items: flex-start; gap: 14px; border-bottom: 2px solid #14152B; padding-bottom: 16px; margin-bottom: 10px; }
+  .head .icon { font-size: 34px; }
+  .head h1 { font-size: 22px; letter-spacing: -0.01em; }
+  .head .sub { color: #5F6489; font-size: 13px; margin-top: 4px; max-width: 60ch; }
+  .brand { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: #8A8FB0; margin: 10px 0 26px; }
+  .brand b { color: #5B21B6; }
+  .card { background: #fff; border: 1px solid #E4E4EE; border-radius: 12px; padding: 22px 24px; margin-bottom: 18px; break-inside: avoid; page-break-inside: avoid; }
+  .card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .day { font-family: ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; padding: 3px 10px; border-radius: 999px; border: 1.5px solid; }
+  .emoji { font-size: 26px; }
+  .titles h2 { font-size: 17px; letter-spacing: -0.01em; }
+  .meta { font-size: 11.5px; color: #8A8FB0; margin-top: 2px; }
+  .hook { font-size: 13.5px; font-style: italic; color: #5B21B6; margin-bottom: 12px; }
+  .sec { margin-bottom: 10px; }
+  .sec h3 { font-family: ui-monospace, Menlo, monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #7C3AED; margin-bottom: 3px; }
+  .sec p { font-size: 12.5px; color: #33344E; }
+  .sec.tip { background: #F3EFFF; border-radius: 8px; padding: 9px 12px; }
+  .foot { text-align: center; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: #8A8FB0; margin-top: 26px; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .card { border-color: #D8D8E4; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <span class="icon">${cat.icon}</span>
+    <div>
+      <h1>${esc(cat.label)}</h1>
+      <p class="sub">${esc(cat.description)}</p>
+    </div>
+  </div>
+  <div class="brand"><b>AI Activation Studio</b> · Custom Activities · ${items.length} activities</div>
+  ${items.map(card).join('')}
+  <div class="foot">AI Activation Studio · Plan · Build · Execute</div>
+</div>
+</body>
+</html>`;
+}
+
+function exportCustomSetHTML(catId) {
+  const cat = CUSTOM_CATEGORIES.find(c => c.id === catId);
+  if (!cat) return;
+  const html = _customSetStaticHTML(catId);
+  downloadBlob(new Blob([html], { type: 'text/html' }), safeFileName(cat.label) + '.html');
+  if (typeof toast === 'function') toast('Set exported as HTML — long-card layout, print-ready.');
+}
+
+function printCustomSet(catId) {
+  const cat = CUSTOM_CATEGORIES.find(c => c.id === catId);
+  if (!cat) return;
+  const html = _customSetStaticHTML(catId);
+  const w = window.open('', '_blank');
+  if (!w) { if (typeof toast === 'function') toast('Pop-up blocked — allow pop-ups to print.'); return; }
+  w.document.write(html);
+  w.document.close();
+  w.addEventListener('load', () => setTimeout(() => w.print(), 250));
 }
 
 if (typeof module !== 'undefined') module.exports = { CUSTOM_CATEGORIES, CUSTOM_ACTIVITIES };

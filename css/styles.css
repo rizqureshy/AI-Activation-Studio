@@ -3745,6 +3745,9 @@ body::before, body::after { content: none; }
   transition: transform 0.65s var(--easing-out);
 }
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+/* Hover peek — the card visibly tilts in 3D so users discover it flips */
+.flip-card:hover:not(.flipped) .flip-inner { transform: rotateY(-16deg); }
+.flip-card.flipped:hover .flip-inner { transform: rotateY(164deg); }
 
 .flip-face {
   position: absolute;
@@ -3795,15 +3798,26 @@ body::before, body::after { content: none; }
   width: 100%;
 }
 .cu-meta-row { display: flex; align-items: center; gap: 6px; }
-.cu-flip-hint {
+.cu-flip-btn {
   margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-family: var(--font-mono);
   font-size: 10.5px;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
-  opacity: 0.75;
+  background: var(--accent-soft);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-pill);
+  padding: 7px 14px;
+  transition: background 200ms var(--easing), color 200ms var(--easing), transform 200ms var(--easing);
 }
+.cu-flip-btn svg { transition: transform 400ms var(--easing); }
+.flip-card:hover .cu-flip-btn { background: var(--accent); color: var(--text-inverse); transform: translateY(-1px); }
+.flip-card:hover .cu-flip-btn svg { transform: rotate(-180deg); }
 
 /* Back */
 .cu-back-head {
@@ -3837,7 +3851,11 @@ body::before, body::after { content: none; }
 .cu-sec p { font-size: 12.5px; line-height: 1.55; color: var(--text); }
 .cu-sec.tip p, .cu-sec.skill p { color: var(--text-muted); font-size: 12px; }
 .cu-sec.tip { background: var(--accent-soft); border-radius: var(--radius); padding: 8px 10px; }
-.flip-back .cu-flip-hint { flex: 0 0 auto; margin-top: 10px; }
+.flip-back .cu-flip-btn { flex: 0 0 auto; margin-top: 10px; align-self: flex-start; }
+
+/* Category header action buttons */
+.cs-cat-actions { display: flex; gap: 8px; flex: 0 0 auto; align-self: flex-start; }
+@media (max-width: 640px) { .cs-cat-actions { width: 100%; } }
 
 @media (max-width: 1000px) { .flip-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px)  {
