@@ -75,6 +75,56 @@ const CUSTOM_ACTIVITIES = [
     realSkill: 'End-to-end AI-assisted judgment — not just production, navigation. You\'re building a repeatable thinking process you can use and teach for the rest of your career.'
   },
   {
+    id: 'CU-W2-MON', program: 'cs-ttt-cohort', group: 'Week 2 — Data Intelligence', track: 'data-analysis', difficulty: 'advanced',
+    day: 'MON', requirement: 'optional', emoji: '📊', timeEstimate: 20,
+    title: 'Make the Data Real',
+    hook: 'AI isn\'t just a content generator — make it engineer data.',
+    mission: 'Use AI to generate a clean, realistic synthetic dataset for a scenario from your role: customer health scores, renewal pipeline, support ticket trends, onboarding completion. Don\'t stop at rows — push AI to engineer patterns in: regional trends, time-based shifts, anomalies, outliers, correlations. This dataset is the prototype foundation for Friday\'s live dashboard. Before submitting, ask AI: what story does this data tell, and what should a dashboard surface first?',
+    submission: 'Your dataset (CSV or table) + the AI-generated pattern summary. Post in the channel.',
+    proTip: 'Have AI build two competing patterns in — one that confirms what you\'d expect, one that surprises you. Pattern recognition only becomes a skill when the data doesn\'t behave the way you assumed.',
+    realSkill: 'AI can generate structured synthetic data engineered for pattern recognition and prototyping — a capability most professionals have never touched. It changes how you think about building with data.'
+  },
+  {
+    id: 'CU-W2-TUE', program: 'cs-ttt-cohort', group: 'Week 2 — Data Intelligence', track: 'data-analysis', difficulty: 'advanced',
+    day: 'TUE', requirement: 'optional', emoji: '🔍', timeEstimate: 20,
+    title: 'Data Detective',
+    hook: 'AI is built on pattern recognition. Point it at your data.',
+    mission: 'Take Monday\'s dataset — or real business data you have access to — and have AI digest it completely. Don\'t ask for a summary; ask for the what, how, where, why, and the prediction: what\'s happening, how it got here, where it\'s concentrated, why it looks this way, and where it\'s heading if nothing changes. Push until AI surfaces something you genuinely didn\'t see. Then push further: what would a skeptical CFO challenge? What can\'t the data explain? What additional data would change the picture entirely?',
+    submission: 'Your most powerful insight + the prompt sequence that unlocked it. Post in the channel.',
+    proTip: 'After the first round of analysis, ask AI: "what am I not asking that I should be?" That single follow-up consistently unlocks the most valuable insight of the session.',
+    realSkill: 'AI was built on pattern recognition — most people never use it that way. Once you\'ve surfaced a hidden pattern in real data, you\'ll never look at a spreadsheet the same way again.'
+  },
+  {
+    id: 'CU-W2-WED', program: 'cs-ttt-cohort', group: 'Week 2 — Data Intelligence', track: 'data-analysis', difficulty: 'advanced',
+    day: 'WED', requirement: 'optional', emoji: '🌐', timeEstimate: 25,
+    title: 'Connect to the Real World',
+    hook: 'Your data doesn\'t exist in a vacuum — wire it to the world.',
+    mission: 'Real data is shaped by forces outside the spreadsheet. Feed AI relevant outside signals — market shifts, industry news, economic indicators, competitor moves, sentiment trends — anything that could plausibly bend Tuesday\'s patterns. Ask it to connect those external forces to your internal data and project a future state: what does this data look like in 12 months if these forces continue? What risks emerge, what opportunities appear, and which of your data\'s assumptions become dangerous?',
+    submission: 'Your real-world connector summary + the AI-generated future-state projection. Post in the channel.',
+    proTip: 'Ask for three future states — optimistic, pessimistic, and most likely. The gap between those three is where the most important strategic questions live.',
+    realSkill: 'AI as a signal synthesizer — connecting external reality to internal data for forward-looking intelligence. Analysts and strategists spend weeks doing this manually; with AI it\'s a session.'
+  },
+  {
+    id: 'CU-W2-THU', program: 'cs-ttt-cohort', group: 'Week 2 — Data Intelligence', track: 'data-analysis', difficulty: 'advanced',
+    day: 'THU', requirement: 'optional', emoji: '📝', timeEstimate: 30,
+    title: 'The Intelligence Report',
+    hook: 'Turn the week\'s data work into a brief a leader can act on.',
+    mission: 'Write the analytical backbone of Friday\'s dashboard — a four-section Data Intelligence Report. 1) Data Analysis: what the dataset shows, key metrics, the overall picture. 2) Anomalies & Hidden Patterns: what doesn\'t fit, what surprised you, what the human eye would have missed. 3) Key Insights & Implications: the so-what and why it matters for the business. 4) Future State Argument: drawing on Wednesday\'s connectors, where this data is heading, what forces drive it, and what leadership should consider acting on now. The clearer this brief, the stronger your dashboard.',
+    submission: 'The full four-section report. Post in the channel.',
+    proTip: 'After AI drafts each section, ask: "what is the single most important sentence in this section — and is it currently the most prominent?" Forcing AI to rank its own findings improves every section.',
+    realSkill: 'Synthesizing a week of data work into one coherent intelligence document. Data without a structured argument is just noise — this turns it into something a senior leader can read, trust, and act on.'
+  },
+  {
+    id: 'CU-W2-FRI', program: 'cs-ttt-cohort', group: 'Week 2 — Data Intelligence', track: 'data-analysis', difficulty: 'advanced',
+    day: 'FRI', requirement: 'mandatory', emoji: '🖥️', timeEstimate: 60,
+    title: 'The Live Dashboard',
+    hook: 'The week comes together: one live artifact that speaks for itself.',
+    mission: 'You have the data, the patterns, the real-world connections, and the intelligence report. Now build the dashboard that brings it all to life. Use AI to build a fully functional live dashboard that visualizes your dataset and tells the complete story — what the data shows, what\'s hidden inside it, what the world outside is doing to it, and where it\'s heading. Must include at least three chart types, a key-insights panel, an anomalies callout, and a future-state projection section. The bar: polished enough to open a leadership meeting without apology — credible enough that a CFO asks follow-up questions instead of dismissing it.',
+    submission: 'Your live dashboard link or HTML file + Thursday\'s Intelligence Report as the companion document. Post both in the channel.',
+    proTip: 'Before building, paste Thursday\'s report into AI and ask: "what must this dashboard communicate in the first ten seconds to a senior leader?" Let that answer drive the layout, headline metrics, and visual hierarchy — not your instinct about what looks good.',
+    realSkill: 'Turning a week of thinking into a single artifact — data, patterns, real-world intelligence, narrative, and design, all in one place, all working together, ready for a leadership conversation.'
+  },
+  {
     id: 'AA-D01', program: 'ai-april', group: 'Week 1 — Apr 1–3 · 3-Day Kickoff', track: 'creative-storytelling', difficulty: 'beginner',
     day: 'WED', requirement: 'optional', emoji: '🦸', timeEstimate: 15,
     title: 'AI Alter Ego',
