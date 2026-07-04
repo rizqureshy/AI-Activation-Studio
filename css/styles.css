@@ -3781,18 +3781,6 @@ body::before, body::after { content: none; }
 .cu-day-wed .cu-day { color: var(--amber);   border-color: var(--amber);   background: var(--amber-soft); }
 .cu-day-thu .cu-day { color: var(--pink);    border-color: var(--pink);    background: var(--pink-soft); }
 .cu-day-fri .cu-day { color: var(--emerald); border-color: var(--emerald); background: var(--emerald-soft); }
-.cu-req {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: var(--radius-pill);
-}
-.cu-req.optional  { color: var(--text-soft); border: 1px dashed var(--border-strong); }
-.cu-req.mandatory { color: var(--danger); border: 1px solid var(--danger); background: var(--danger-soft); font-weight: 700; }
-
 .cu-emoji { font-size: 40px; margin-bottom: 12px; }
 .cu-title { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 8px; }
 .cu-hook { color: var(--text-muted); font-size: 14px; line-height: 1.5; }

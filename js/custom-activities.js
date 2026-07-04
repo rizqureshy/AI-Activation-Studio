@@ -8,14 +8,14 @@ const CUSTOM_CATEGORIES = [
     id: 'thinking-modes',
     icon: '🧠',
     label: 'AI Thinking Modes — Weekly Series',
-    description: 'A five-day progression for advanced prompters. Four optional thinking-mode drills Monday–Thursday, converging in a mandatory Friday Situation Room that uses all four.'
+    description: 'A five-day progression for advanced prompters. Four thinking-mode drills Monday–Thursday, converging in a Friday Situation Room that uses all four. Required/optional is set per program when you schedule them.'
   }
 ];
 
 const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W1-MON', category: 'thinking-modes', track: 'prompt-engineering', difficulty: 'advanced',
-    day: 'MON', requirement: 'optional', emoji: '🧠', timeEstimate: 20,
+    day: 'MON', emoji: '🧠', timeEstimate: 20,
     title: 'The Challenger',
     hook: 'Use AI to attack your idea — not to validate it.',
     mission: 'Bring one rough idea you\'re working on. Set AI up as a structured devil\'s advocate: find the weak points, expose the assumptions, argue the opposite position as hard as it can. Push back. Defend what deserves defending — let go of what doesn\'t.',
@@ -25,7 +25,7 @@ const CUSTOM_ACTIVITIES = [
   },
   {
     id: 'CU-W1-TUE', category: 'thinking-modes', track: 'prompt-engineering', difficulty: 'advanced',
-    day: 'TUE', requirement: 'optional', emoji: '🎯', timeEstimate: 20,
+    day: 'TUE', emoji: '🎯', timeEstimate: 20,
     title: 'The Translator',
     hook: 'Profile the audience before you write a single word.',
     mission: 'Take Monday\'s idea and prepare it for three audiences: a senior leader, a customer, and a technical audience. Have AI profile each one FIRST — what they fear, what they want, what language lands, what loses them in ten seconds. Let the profile drive the message, not your instinct.',
@@ -35,7 +35,7 @@ const CUSTOM_ACTIVITIES = [
   },
   {
     id: 'CU-W1-WED', category: 'thinking-modes', track: 'prompt-engineering', difficulty: 'advanced',
-    day: 'WED', requirement: 'optional', emoji: '💡', timeEstimate: 20,
+    day: 'WED', emoji: '💡', timeEstimate: 20,
     title: 'Make the Complex Simple',
     hook: 'Explain your idea with analogies — without making it wrong.',
     mission: 'Take your idea, product, process, or concept and have AI explain it through analogies for three different audiences. The goal: easier to understand without becoming inaccurate.',
@@ -45,7 +45,7 @@ const CUSTOM_ACTIVITIES = [
   },
   {
     id: 'CU-W1-THU', category: 'thinking-modes', track: 'prompt-engineering', difficulty: 'advanced',
-    day: 'THU', requirement: 'optional', emoji: '🔍', timeEstimate: 20,
+    day: 'THU', emoji: '🔍', timeEstimate: 20,
     title: 'Reverse Engineer the Prompt',
     hook: 'Think backwards from great output to great input.',
     mission: 'Find a strong piece of output — a compelling proposal, a sharp executive summary, a well-structured QBR, a clear slide outline. Ask AI what prompt most likely created it. Then improve that prompt, and keep iterating until it\'s genuinely better than where you started.',
@@ -55,7 +55,7 @@ const CUSTOM_ACTIVITIES = [
   },
   {
     id: 'CU-W1-FRI', category: 'thinking-modes', track: 'prompt-engineering', difficulty: 'advanced',
-    day: 'FRI', requirement: 'mandatory', emoji: '🎯', timeEstimate: 45,
+    day: 'FRI', emoji: '🎯', timeEstimate: 45,
     title: 'The Situation Room',
     hook: 'Navigate one genuinely messy, real situation — with all four modes.',
     mission: 'Take one ambiguous, multi-layered situation from your work: a relationship showing risk signals, a leadership ask with unclear scope, a proposal that must land with multiple stakeholders. Use all four modes from this week — Challenge the assumptions, Translate for your audiences, Simplify the core message, and Reverse-engineer what a great output looks like before building it.',
@@ -111,9 +111,6 @@ function renderCustomActivities() {
 
 function customActivityCard(a) {
   const track = TRACKS.find(t => t.id === a.track);
-  const req = a.requirement === 'mandatory'
-    ? '<span class="cu-req mandatory">🔴 Mandatory</span>'
-    : '<span class="cu-req optional">Optional</span>';
   return `
     <div class="flip-card" onclick="this.classList.toggle('flipped')" role="button" tabindex="0"
          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped');}">
@@ -121,7 +118,6 @@ function customActivityCard(a) {
         <div class="flip-face flip-front cu-day-${a.day.toLowerCase()}">
           <div class="cu-top">
             <span class="cu-day">${a.day}</span>
-            ${req}
           </div>
           <div class="cu-emoji">${a.emoji}</div>
           <h3 class="cu-title">${escapeHtml(a.title)}</h3>
