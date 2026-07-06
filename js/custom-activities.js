@@ -125,6 +125,54 @@ const CUSTOM_ACTIVITIES = [
     realSkill: 'Turning a week of thinking into a single artifact — data, patterns, real-world intelligence, narrative, and design, all in one place, all working together, ready for a leadership conversation.'
   },
   {
+    id: 'CU-W3-MON', program: 'cs-ttt-cohort', group: 'Week 3 — Design It, Build It, Ship It', track: 'process-automation', difficulty: 'advanced',
+    day: 'MON', requirement: 'optional', emoji: '✏️', timeEstimate: 25,
+    title: 'Design the Process',
+    hook: 'Think with your hands first — then let AI read the drawing.',
+    mission: 'Before touching any AI tool, design a new or improved CS process from scratch — a customer onboarding flow, a renewal readiness check, a health-score intervention path, an escalation framework. Draw it BY HAND: every stage, decision point, and handoff. Photograph it. Then feed the photo to an AI vision tool and ask it to interpret the drawing, refine the logic, and write a polished one-page process brief — what it is, how it flows, who owns each stage, and why it matters. Data note: if your scenario draws on real Equinix customers or internal data, use ACE, Copilot, or SideKick only — never external tools.',
+    submission: 'Two artifacts: the photo of your hand-drawn design + the AI-generated process brief. Post both in the channel.',
+    proTip: 'Tell AI: "interpret this hand-drawn process diagram, identify any gaps or logical inconsistencies, and write a structured one-page brief — what this process is, how it flows, and what value it delivers." The more specific the instruction, the more useful the brief.',
+    realSkill: 'AI as a visual interpreter and articulator. You provide the thinking in its rawest, most honest form; AI structures it and gives it language. Analog first, AI second — that sequence beats starting from a blank prompt, every time.'
+  },
+  {
+    id: 'CU-W3-TUE', program: 'cs-ttt-cohort', group: 'Week 3 — Design It, Build It, Ship It', track: 'application-building', difficulty: 'advanced',
+    day: 'TUE', requirement: 'optional', emoji: '🎬', timeEstimate: 30,
+    title: 'Build the App',
+    hook: 'Yesterday\'s sketch becomes a living application today.',
+    mission: 'Feed Monday\'s photograph AND process brief into an AI builder tool — together. Ask for a fully functional animated HTML application that brings your process to life: each stage appearing in sequence with smooth transitions, interactive elements a user can click through, and a design polished enough to share with a colleague. Don\'t accept the first output — iterate until the animation matches your intent and the interactions feel intuitive. Same data rule as Monday: internal content stays in ACE, Copilot, or SideKick.',
+    submission: 'Your working HTML file. Post in the channel.',
+    proTip: 'One prompt, both inputs: "use the hand-drawn diagram as the structural reference and the brief as the content guide — build an animated interactive HTML flow a CS professional could walk through in under three minutes." Both inputs together produces a more faithful result than feeding them separately.',
+    realSkill: 'Transforming a hand-drawn concept into a functional interactive application without writing a single line of code. The distance between an idea on paper and a working app just collapsed to one well-constructed prompt and a willingness to iterate.'
+  },
+  {
+    id: 'CU-W3-WED', program: 'cs-ttt-cohort', group: 'Week 3 — Design It, Build It, Ship It', track: 'application-building', difficulty: 'advanced',
+    day: 'WED', requirement: 'optional', emoji: '🔧', timeEstimate: 25,
+    title: 'Perfect and Package',
+    hook: 'A working app and a deployable app are two different things.',
+    mission: 'Close the gap between working and deployable. Three jobs: 1) Perfect the experience — fix anything that feels rough, unclear, or unfinished. 2) Clean the code — have AI review the HTML, remove redundancies, and make the file structure logical and maintainable. 3) Decompose it into a proper package — separate files, cleanly organized, ready to upload to a repository.',
+    submission: 'The finished packaged app as a compressed folder. Post in the channel.',
+    proTip: 'Before finalizing, ask AI: "review this application and tell me three things that would confuse a first-time user, three things that look unpolished, and three code-structure improvements before deployment." That one prompt surfaces more refinements than you\'d catch yourself.',
+    realSkill: 'AI as a quality-assurance and packaging tool. Building something is one skill — shipping something clean is another. Today you learn the difference.'
+  },
+  {
+    id: 'CU-W3-THU', program: 'cs-ttt-cohort', group: 'Week 3 — Design It, Build It, Ship It', track: 'code-technical', difficulty: 'beginner',
+    day: 'THU', requirement: 'optional', emoji: '📺', timeEstimate: 30,
+    title: 'Learn GitHub',
+    hook: 'Before you ship to the world, learn where your work will live.',
+    mission: 'Watch the beginner video "GitHub Basics Made Easy" by Skill Foundry (youtube.com/watch?v=Oaj3RBIoGFc) — what GitHub is, how it works, and how to clone, commit, push, and pull. No coding background needed. Watch it fully and take notes. No tools needed today — learn only.',
+    submission: 'One thing that surprised you + one question you still have. Post both in the channel.'
+  },
+  {
+    id: 'CU-W3-FRI', program: 'cs-ttt-cohort', group: 'Week 3 — Design It, Build It, Ship It', track: 'code-technical', difficulty: 'advanced',
+    day: 'FRI', requirement: 'mandatory', emoji: '🚀', timeEstimate: 45,
+    title: 'Ship It',
+    hook: 'Sketch on Monday. Live URL on Friday. Ship it.',
+    mission: 'Everything this week has been building to this. Create your GitHub account using your Equinix credentials. Create a new public repository. Upload your Week 3 packaged application. Enable GitHub Pages and publish it live. You now have a real URL — a CS process tool you designed by hand on Monday, built with AI on Tuesday, refined on Wednesday, and shipped to the world on Friday.',
+    submission: 'Your live GitHub Pages link + Monday\'s process brief as the companion document. Post both in the channel.',
+    proTip: 'Once your link is live, open it on your phone and share it with someone outside the program before you post it. If they understand what it does in 30 seconds without any explanation, it\'s ready. If not, add one clarifying element before submitting.',
+    realSkill: 'Taking an idea from analog sketch to live deployed application in five days — nothing but great thinking, smart prompting, and the right tools in the right sequence. That\'s not a training exercise. That\'s a professional capability.'
+  },
+  {
     id: 'AA-D01', program: 'ai-april', group: 'Week 1 — Apr 1–3 · 3-Day Kickoff', track: 'creative-storytelling', difficulty: 'beginner',
     day: 'WED', requirement: 'optional', emoji: '🦸', timeEstimate: 15,
     title: 'AI Alter Ego',
