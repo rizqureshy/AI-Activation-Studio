@@ -188,6 +188,61 @@ const CUSTOM_ACTIVITIES = [
     realSkill: 'Taking an idea from analog sketch to live deployed application in five days — nothing but great thinking, smart prompting, and the right tools in the right sequence. That\'s not a training exercise. That\'s a professional capability.'
   },
   {
+    id: 'CU-W4-MON', program: 'cs-ttt-cohort', group: 'Week 4 — From Participant to Program Designer', track: 'learning-design', difficulty: 'advanced',
+    day: 'MON', requirement: 'optional', emoji: '🪞', timeEstimate: 25,
+    tools: ['ChatGPT', 'Copilot', 'Claude'],
+    title: 'Reflect with AI',
+    hook: 'Three weeks of assumptions, revisited honestly — with AI as your mirror.',
+    mission: 'Revisit the assumptions you started this program with. Pour your entire learning journey into AI — what clicked, what surprised you, what frustrated you, what shifted in how you think and work. Be specific: the moments, the activities, the outputs that changed something. Then ask AI for something most people never try: analyze what I\'ve shared and tell me what kind of AI thinker I\'m becoming, which skills are emerging strongest in me, and what natural next direction fits my role, my strengths, and where AI is heading. AI becomes your personal learning mirror.',
+    submission: 'Your reflection + AI\'s personalized growth read. Post in the channel.',
+    proTip: 'Don\'t summarize your three weeks for AI — dump the raw, unfiltered version: what didn\'t work, the moments of genuine surprise, the activities you almost skipped. The more honest the input, the more useful the analysis.',
+    realSkill: 'Using AI as a personal development partner. Reflection without analysis stays in the past — reflection with AI points you toward what comes next.'
+  },
+  {
+    id: 'CU-W4-TUE', program: 'cs-ttt-cohort', group: 'Week 4 — From Participant to Program Designer', track: 'learning-design', difficulty: 'advanced',
+    day: 'TUE', requirement: 'optional', emoji: '📈', timeEstimate: 25,
+    tools: ['ChatGPT', 'Copilot', 'Claude'],
+    title: 'Level Up with AI',
+    hook: 'Yesterday AI held up a mirror. Today it builds you a map.',
+    mission: 'Take Monday\'s reflection and growth read deeper. Have AI identify the two or three skills most worth polishing given where you are and where you want to go — then design a personalized upskilling track built around YOUR role, gaps, ambitions, and strengths: new activities, new challenges, new prompts, new tools. Not a generic learning plan. Then push further: what should someone at your level, in your role, on your trajectory be doing with AI six months from now that they aren\'t doing today?',
+    submission: 'Your personalized upskilling track + your six-month AI vision. Post in the channel.',
+    proTip: 'After AI builds your track, ask: "which single activity here would create the most visible impact for my team in the shortest time?" Start there — the best development plans have an immediate win built into the first week.',
+    realSkill: 'Using AI as a personalized curriculum designer. Generic learning paths are built for everyone. This one is built for you.'
+  },
+  {
+    id: 'CU-W4-WED', program: 'cs-ttt-cohort', group: 'Week 4 — From Participant to Program Designer', track: 'learning-design', difficulty: 'advanced',
+    day: 'WED', requirement: 'optional', emoji: '🎨', timeEstimate: 30,
+    tools: ['ChatGPT', 'Claude', 'Copilot'],
+    title: 'Design Your Program',
+    hook: 'You lived the program from the inside. Now design one from the outside.',
+    mission: 'Using everything you\'ve learned — the thinking modes, the data skills, the building capabilities, the reflection practice — design 3–4 themed tracks for your own AI Activation Program. Each track needs a clear theme, a weekly arc, and 3–5 activities that build on each other. Design for your specific sub-team: what they need most, what would land, what pushes them just far enough without losing them. Use AI as your curriculum partner throughout — have it challenge your activity ideas, improve the sequencing, find the gaps, and kill anything that\'s a time-waster rather than a skill-builder. (Internal or customer specifics? ACE, Copilot, or SideKick only.)',
+    submission: 'Your 3–4 track designs with themes, arcs, and activities. Post in the channel.',
+    proTip: 'Before designing any activity, ask AI: "what is the one AI skill that would create the most immediate productivity lift for a CS professional who has never used AI seriously?" Anchor your first track there — start where the participant is, not where the designer wishes they were.',
+    realSkill: 'Using AI as a curriculum design and quality-assurance partner. Designing a program for others forces you to deeply understand what you\'ve learned yourself — and that understanding is exactly what Train the Trainer is built on.'
+  },
+  {
+    id: 'CU-W4-THU', program: 'cs-ttt-cohort', group: 'Week 4 — From Participant to Program Designer', track: 'learning-design', difficulty: 'advanced',
+    day: 'THU', requirement: 'optional', emoji: '🏗️', timeEstimate: 45,
+    tools: ['Activation Studio', 'ChatGPT', 'Claude'],
+    title: 'Build the Foundation',
+    hook: 'From tracks on paper to a program your team could start Monday.',
+    mission: 'Take Wednesday\'s tracks and build the complete, ready-to-run program — in AI or the Activation Studio. Every element: the program name and identity, the weekly themes and how they connect, the Mon–Thu optional activities with full briefs, the Friday mandatory challenges and what they produce, the submission format and what good looks like, the tone and culture you want, and the one thing every participant walks away with. Not a slide-deck outline — a working blueprint your sub-team could start the following Monday. Pressure-test every decision with AI: what would make a participant drop out by Week 2? Which activities feel like homework rather than genuine learning? Which Friday challenge would make someone genuinely proud of what they built?',
+    submission: 'Your complete program blueprint. Post in the channel.',
+    proTip: 'Have AI roleplay a skeptical participant — busy, tried AI before, found it underwhelming, needs immediate value or they disengage. Ask that persona to review your program and say where they\'d check out. Fix those moments before Friday.',
+    realSkill: 'Using AI to build and stress-test a complete learning experience. You\'re not just a participant anymore — you\'re a program designer, and this blueprint is the proof.'
+  },
+  {
+    id: 'CU-W4-FRI', program: 'cs-ttt-cohort', group: 'Week 4 — From Participant to Program Designer', track: 'presentation', difficulty: 'advanced',
+    day: 'FRI', requirement: 'mandatory', emoji: '🎤', timeEstimate: 60,
+    tools: ['Copilot', 'ChatGPT'],
+    title: 'Present Your AI Activation Plan',
+    hook: 'Not a summary. A launch. Present the program you own.',
+    mission: 'The moment the entire program has been building toward: present your AI Activation Program to Chris and the cohort. Not a summary of what you learned. Not a reflection on three weeks. A real, deployable program you could run with your sub-team starting next week. Cover four things: what your program achieves and for whom; your 3–4 tracks and why you sequenced them that way; one activity from each track you\'re most proud of and the skill it builds; and your personal commitment — what you\'re doing differently from this point forward as an AI practitioner AND an AI activator. The program doesn\'t end today. It multiplies — every person leaves with a program they own and a team they\'re ready to activate.',
+    submission: 'Your program blueprint + your presentation. Post in the channel — with the live link if your blueprint ships on GitHub Pages.',
+    proTip: 'Open with the one moment from the past three weeks where AI genuinely surprised you — not the best output, the moment something shifted. That\'s the moment your audience will remember, and the most honest answer to why any of this matters.',
+    realSkill: 'Turning three weeks of learning into a program you can run, a capability you can teach, and a commitment you can keep. That\'s what Train the Trainer looks like in the AI era.'
+  },
+  {
     id: 'AA-D01', program: 'ai-april', group: 'Week 1 — Apr 1–3 · 3-Day Kickoff', track: 'creative-storytelling', difficulty: 'beginner',
     day: 'WED', requirement: 'optional', emoji: '🦸', timeEstimate: 15,
     tools: ['ChatGPT', 'Copilot'],
@@ -472,7 +527,7 @@ function renderCustomActivities() {
 
 const _CU_TOOL_COLORS = {
   chatgpt: 'emerald', copilot: 'sky', claude: 'amber', gemini: 'violet',
-  vibe: 'pink', github: 'plain', ace: 'violet', sidekick: 'violet'
+  vibe: 'pink', github: 'plain', ace: 'violet', sidekick: 'violet', activationstudio: 'violet'
 };
 function _cuToolChip(name) {
   const key = name.toLowerCase().replace(/[^a-z]/g, '');
