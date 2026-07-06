@@ -476,6 +476,10 @@ function openCustomActivities() {
   renderCustomActivities();
 }
 
+// Collapse state survives re-renders within a session
+const _customOpenWeeks = new Set();
+const _customCollapsedPrograms = new Set();
+
 function renderCustomActivities() {
   const root = document.getElementById('custom-root');
   if (!root) return;
@@ -485,7 +489,7 @@ function renderCustomActivities() {
         <div>
           <div class="sh-eyebrow bracket">[ 03 · Program sets ]</div>
           <h1 class="sh-title">Custom <span class="accent">activities</span>.</h1>
-          <p class="sh-sub">Activity sets from the programs we run, organized by program — pull any of them into a new program from the builder. Defaults shown here are each activity’s status in its home program; you set required/optional per program in design mode.</p>
+          <p class="sh-sub">Activity sets from the programs we run, organized by program and week — expand a week to see its cards, and pull any of them into a new program from the builder. Defaults shown are each activity’s status in its home program; required/optional is set per program in design mode.</p>
         </div>
         <div class="sh-meta"><b>${CUSTOM_ACTIVITIES.length}</b>activities</div>
       </div>
@@ -495,32 +499,79 @@ function renderCustomActivities() {
       ${CUSTOM_PROGRAMS.map(prog => {
         const items = CUSTOM_ACTIVITIES.filter(a => a.program === prog.id);
         const groups = [...new Set(items.map(a => a.group))];
+        const collapsed = _customCollapsedPrograms.has(prog.id);
         return `
-          <div class="cs-cat">
-            <div class="cs-cat-head">
+          <div class="cs-cat ${collapsed ? 'collapsed' : ''}" data-prog="${prog.id}">
+            <div class="cs-cat-head cs-cat-toggle" data-prog-toggle="${prog.id}" title="Click to collapse / expand this program">
               <span class="cs-cat-icon">${prog.icon}</span>
               <div>
                 <h2 class="cs-cat-title">${escapeHtml(prog.label)} <span class="prog-status ${prog.status}">${prog.status}</span></h2>
                 <p class="cs-cat-sub">${escapeHtml(prog.description)}</p>
               </div>
-              <span class="cs-cat-count">${items.length} activities</span>
+              <span class="cs-cat-count">${groups.length ? groups.length + ' weeks · ' : ''}${items.length} activities</span>
               ${items.length ? `
               <div class="cs-cat-actions">
                 <button class="btn small ghost" onclick="exportCustomSetHTML('${prog.id}')" title="Download this program's set as a standalone HTML page (long-card layout)">⬇ Export HTML</button>
                 <button class="btn small ghost" onclick="printCustomSet('${prog.id}')" title="Open a print-ready view — save as PDF from the print dialog">🖨 Print / PDF</button>
               </div>` : ''}
+              <span class="cs-chevron">▾</span>
             </div>
-            ${items.length === 0
-              ? `<div class="cs-empty">No activities imported yet — this program’s set is on its way.</div>`
-              : groups.map(g => `
-                ${g ? `<h3 class="cs-group">${escapeHtml(g)}</h3>` : ''}
-                <div class="flip-grid">
-                  ${items.filter(a => a.group === g).map(customActivityCard).join('')}
-                </div>
-              `).join('')}
+            <div class="cs-cat-body">
+              ${items.length === 0
+                ? `<div class="cs-empty">No activities imported yet — this program’s set is on its way.</div>`
+                : groups.map(g => _customWeekBlock(prog, g, items.filter(a => a.group === g))).join('')}
+            </div>
           </div>
         `;
       }).join('')}
+    </div>
+  `;
+
+  // Program collapse/expand (header click; export buttons excluded)
+  root.querySelectorAll('[data-prog-toggle]').forEach(el => {
+    el.addEventListener('click', e => {
+      if (e.target.closest('.cs-cat-actions')) return;
+      const id = el.dataset.progToggle;
+      const cat = el.closest('.cs-cat');
+      const nowCollapsed = cat.classList.toggle('collapsed');
+      if (nowCollapsed) _customCollapsedPrograms.add(id); else _customCollapsedPrograms.delete(id);
+    });
+  });
+  // Week expand/collapse
+  root.querySelectorAll('.cs-week-bar').forEach(el => {
+    el.addEventListener('click', () => {
+      const key = el.dataset.week;
+      const wk = el.closest('.cs-week');
+      const open = wk.classList.toggle('open');
+      if (open) _customOpenWeeks.add(key); else _customOpenWeeks.delete(key);
+    });
+  });
+}
+
+// One collapsible week: an outline bar (theme, day-by-day sequence,
+// counts and total time) that expands into the flip-card grid.
+function _customWeekBlock(prog, group, items) {
+  const key = prog.id + '::' + group;
+  const open = _customOpenWeeks.has(key);
+  const mins = items.reduce((sum, a) => sum + (a.timeEstimate || 0), 0);
+  const time = mins >= 60 ? Math.floor(mins / 60) + 'h' + (mins % 60 ? ' ' + (mins % 60) + 'm' : '') : mins + 'm';
+  const mand = items.filter(a => a.requirement === 'mandatory').length;
+  const outline = items.map(a =>
+    `<span class="cs-wo-item${a.requirement === 'mandatory' ? ' mand' : ''}"><b>${a.day}</b> ${a.emoji} ${escapeHtml(a.title)}</span>`
+  ).join('<span class="cs-wo-sep">→</span>');
+  return `
+    <div class="cs-week ${open ? 'open' : ''}">
+      <button type="button" class="cs-week-bar" data-week="${escapeHtml(key)}" aria-expanded="${open}">
+        <div class="cs-week-main">
+          <div class="cs-week-title">${escapeHtml(group)}</div>
+          <div class="cs-week-outline">${outline}</div>
+        </div>
+        <div class="cs-week-meta">${items.length} activities${mand ? ' · ' + mand + ' mandatory' : ''} · ~${time}</div>
+        <span class="cs-chevron">▾</span>
+      </button>
+      <div class="cs-week-body">
+        <div class="flip-grid">${items.map(customActivityCard).join('')}</div>
+      </div>
     </div>
   `;
 }
