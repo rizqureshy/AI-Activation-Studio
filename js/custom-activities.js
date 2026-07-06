@@ -27,6 +27,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W1-MON', program: 'cs-ttt-cohort', group: 'Week 1 — AI Thinking Modes', track: 'prompt-engineering', difficulty: 'advanced',
     day: 'MON', requirement: 'optional', emoji: '🧠', timeEstimate: 20,
+    tools: ['ChatGPT', 'Copilot', 'Claude'],
     title: 'The Challenger',
     hook: 'Use AI to attack your idea — not to validate it.',
     mission: 'Bring one rough idea you\'re working on. Set AI up as a structured devil\'s advocate: find the weak points, expose the assumptions, argue the opposite position as hard as it can. Push back. Defend what deserves defending — let go of what doesn\'t.',
@@ -37,6 +38,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W1-TUE', program: 'cs-ttt-cohort', group: 'Week 1 — AI Thinking Modes', track: 'prompt-engineering', difficulty: 'advanced',
     day: 'TUE', requirement: 'optional', emoji: '🎯', timeEstimate: 20,
+    tools: ['ChatGPT', 'Copilot', 'Claude'],
     title: 'The Translator',
     hook: 'Profile the audience before you write a single word.',
     mission: 'Take Monday\'s idea and prepare it for three audiences: a senior leader, a customer, and a technical audience. Have AI profile each one FIRST — what they fear, what they want, what language lands, what loses them in ten seconds. Let the profile drive the message, not your instinct.',
@@ -47,6 +49,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W1-WED', program: 'cs-ttt-cohort', group: 'Week 1 — AI Thinking Modes', track: 'prompt-engineering', difficulty: 'advanced',
     day: 'WED', requirement: 'optional', emoji: '💡', timeEstimate: 20,
+    tools: ['ChatGPT', 'Copilot', 'Claude'],
     title: 'Make the Complex Simple',
     hook: 'Explain your idea with analogies — without making it wrong.',
     mission: 'Take your idea, product, process, or concept and have AI explain it through analogies for three different audiences. The goal: easier to understand without becoming inaccurate.',
@@ -57,6 +60,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W1-THU', program: 'cs-ttt-cohort', group: 'Week 1 — AI Thinking Modes', track: 'prompt-engineering', difficulty: 'advanced',
     day: 'THU', requirement: 'optional', emoji: '🔍', timeEstimate: 20,
+    tools: ['ChatGPT', 'Copilot', 'Claude'],
     title: 'Reverse Engineer the Prompt',
     hook: 'Think backwards from great output to great input.',
     mission: 'Find a strong piece of output — a compelling proposal, a sharp executive summary, a well-structured QBR, a clear slide outline. Ask AI what prompt most likely created it. Then improve that prompt, and keep iterating until it\'s genuinely better than where you started.',
@@ -67,6 +71,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W1-FRI', program: 'cs-ttt-cohort', group: 'Week 1 — AI Thinking Modes', track: 'prompt-engineering', difficulty: 'advanced',
     day: 'FRI', requirement: 'mandatory', emoji: '🎯', timeEstimate: 45,
+    tools: ['ChatGPT', 'Copilot', 'Claude'],
     title: 'The Situation Room',
     hook: 'Navigate one genuinely messy, real situation — with all four modes.',
     mission: 'Take one ambiguous, multi-layered situation from your work: a relationship showing risk signals, a leadership ask with unclear scope, a proposal that must land with multiple stakeholders. Use all four modes from this week — Challenge the assumptions, Translate for your audiences, Simplify the core message, and Reverse-engineer what a great output looks like before building it.',
@@ -77,6 +82,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W2-MON', program: 'cs-ttt-cohort', group: 'Week 2 — Data Intelligence', track: 'data-analysis', difficulty: 'advanced',
     day: 'MON', requirement: 'optional', emoji: '📊', timeEstimate: 20,
+    tools: ['ChatGPT', 'Claude', 'Copilot'],
     title: 'Make the Data Real',
     hook: 'AI isn\'t just a content generator — make it engineer data.',
     mission: 'Use AI to generate a clean, realistic synthetic dataset for a scenario from your role: customer health scores, renewal pipeline, support ticket trends, onboarding completion. Don\'t stop at rows — push AI to engineer patterns in: regional trends, time-based shifts, anomalies, outliers, correlations. This dataset is the prototype foundation for Friday\'s live dashboard. Before submitting, ask AI: what story does this data tell, and what should a dashboard surface first?',
@@ -87,6 +93,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W2-TUE', program: 'cs-ttt-cohort', group: 'Week 2 — Data Intelligence', track: 'data-analysis', difficulty: 'advanced',
     day: 'TUE', requirement: 'optional', emoji: '🔍', timeEstimate: 20,
+    tools: ['ChatGPT', 'Claude', 'Copilot'],
     title: 'Data Detective',
     hook: 'AI is built on pattern recognition. Point it at your data.',
     mission: 'Take Monday\'s dataset — or real business data you have access to — and have AI digest it completely. Don\'t ask for a summary; ask for the what, how, where, why, and the prediction: what\'s happening, how it got here, where it\'s concentrated, why it looks this way, and where it\'s heading if nothing changes. Push until AI surfaces something you genuinely didn\'t see. Then push further: what would a skeptical CFO challenge? What can\'t the data explain? What additional data would change the picture entirely?',
@@ -97,6 +104,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W2-WED', program: 'cs-ttt-cohort', group: 'Week 2 — Data Intelligence', track: 'data-analysis', difficulty: 'advanced',
     day: 'WED', requirement: 'optional', emoji: '🌐', timeEstimate: 25,
+    tools: ['ChatGPT', 'Claude', 'Gemini'],
     title: 'Connect to the Real World',
     hook: 'Your data doesn\'t exist in a vacuum — wire it to the world.',
     mission: 'Real data is shaped by forces outside the spreadsheet. Feed AI relevant outside signals — market shifts, industry news, economic indicators, competitor moves, sentiment trends — anything that could plausibly bend Tuesday\'s patterns. Ask it to connect those external forces to your internal data and project a future state: what does this data look like in 12 months if these forces continue? What risks emerge, what opportunities appear, and which of your data\'s assumptions become dangerous?',
@@ -107,6 +115,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W2-THU', program: 'cs-ttt-cohort', group: 'Week 2 — Data Intelligence', track: 'data-analysis', difficulty: 'advanced',
     day: 'THU', requirement: 'optional', emoji: '📝', timeEstimate: 30,
+    tools: ['ChatGPT', 'Claude', 'Copilot'],
     title: 'The Intelligence Report',
     hook: 'Turn the week\'s data work into a brief a leader can act on.',
     mission: 'Write the analytical backbone of Friday\'s dashboard — a four-section Data Intelligence Report. 1) Data Analysis: what the dataset shows, key metrics, the overall picture. 2) Anomalies & Hidden Patterns: what doesn\'t fit, what surprised you, what the human eye would have missed. 3) Key Insights & Implications: the so-what and why it matters for the business. 4) Future State Argument: drawing on Wednesday\'s connectors, where this data is heading, what forces drive it, and what leadership should consider acting on now. The clearer this brief, the stronger your dashboard.',
@@ -117,6 +126,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W2-FRI', program: 'cs-ttt-cohort', group: 'Week 2 — Data Intelligence', track: 'data-analysis', difficulty: 'advanced',
     day: 'FRI', requirement: 'mandatory', emoji: '🖥️', timeEstimate: 60,
+    tools: ['Claude', 'ChatGPT'],
     title: 'The Live Dashboard',
     hook: 'The week comes together: one live artifact that speaks for itself.',
     mission: 'You have the data, the patterns, the real-world connections, and the intelligence report. Now build the dashboard that brings it all to life. Use AI to build a fully functional live dashboard that visualizes your dataset and tells the complete story — what the data shows, what\'s hidden inside it, what the world outside is doing to it, and where it\'s heading. Must include at least three chart types, a key-insights panel, an anomalies callout, and a future-state projection section. The bar: polished enough to open a leadership meeting without apology — credible enough that a CFO asks follow-up questions instead of dismissing it.',
@@ -127,6 +137,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W3-MON', program: 'cs-ttt-cohort', group: 'Week 3 — Design It, Build It, Ship It', track: 'process-automation', difficulty: 'advanced',
     day: 'MON', requirement: 'optional', emoji: '✏️', timeEstimate: 25,
+    tools: ['ChatGPT', 'Copilot', 'Gemini'],
     title: 'Design the Process',
     hook: 'Think with your hands first — then let AI read the drawing.',
     mission: 'Before touching any AI tool, design a new or improved CS process from scratch — a customer onboarding flow, a renewal readiness check, a health-score intervention path, an escalation framework. Draw it BY HAND: every stage, decision point, and handoff. Photograph it. Then feed the photo to an AI vision tool and ask it to interpret the drawing, refine the logic, and write a polished one-page process brief — what it is, how it flows, who owns each stage, and why it matters. Data note: if your scenario draws on real Equinix customers or internal data, use ACE, Copilot, or SideKick only — never external tools.',
@@ -137,6 +148,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W3-TUE', program: 'cs-ttt-cohort', group: 'Week 3 — Design It, Build It, Ship It', track: 'application-building', difficulty: 'advanced',
     day: 'TUE', requirement: 'optional', emoji: '🎬', timeEstimate: 30,
+    tools: ['Claude', 'ChatGPT'],
     title: 'Build the App',
     hook: 'Yesterday\'s sketch becomes a living application today.',
     mission: 'Feed Monday\'s photograph AND process brief into an AI builder tool — together. Ask for a fully functional animated HTML application that brings your process to life: each stage appearing in sequence with smooth transitions, interactive elements a user can click through, and a design polished enough to share with a colleague. Don\'t accept the first output — iterate until the animation matches your intent and the interactions feel intuitive. Same data rule as Monday: internal content stays in ACE, Copilot, or SideKick.',
@@ -147,6 +159,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W3-WED', program: 'cs-ttt-cohort', group: 'Week 3 — Design It, Build It, Ship It', track: 'application-building', difficulty: 'advanced',
     day: 'WED', requirement: 'optional', emoji: '🔧', timeEstimate: 25,
+    tools: ['Claude', 'ChatGPT'],
     title: 'Perfect and Package',
     hook: 'A working app and a deployable app are two different things.',
     mission: 'Close the gap between working and deployable. Three jobs: 1) Perfect the experience — fix anything that feels rough, unclear, or unfinished. 2) Clean the code — have AI review the HTML, remove redundancies, and make the file structure logical and maintainable. 3) Decompose it into a proper package — separate files, cleanly organized, ready to upload to a repository.',
@@ -157,6 +170,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W3-THU', program: 'cs-ttt-cohort', group: 'Week 3 — Design It, Build It, Ship It', track: 'code-technical', difficulty: 'beginner',
     day: 'THU', requirement: 'optional', emoji: '📺', timeEstimate: 30,
+    tools: [],
     title: 'Learn GitHub',
     hook: 'Before you ship to the world, learn where your work will live.',
     mission: 'Watch the beginner video "GitHub Basics Made Easy" by Skill Foundry (youtube.com/watch?v=Oaj3RBIoGFc) — what GitHub is, how it works, and how to clone, commit, push, and pull. No coding background needed. Watch it fully and take notes. No tools needed today — learn only.',
@@ -165,6 +179,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'CU-W3-FRI', program: 'cs-ttt-cohort', group: 'Week 3 — Design It, Build It, Ship It', track: 'code-technical', difficulty: 'advanced',
     day: 'FRI', requirement: 'mandatory', emoji: '🚀', timeEstimate: 45,
+    tools: ['GitHub'],
     title: 'Ship It',
     hook: 'Sketch on Monday. Live URL on Friday. Ship it.',
     mission: 'Everything this week has been building to this. Create your GitHub account using your Equinix credentials. Create a new public repository. Upload your Week 3 packaged application. Enable GitHub Pages and publish it live. You now have a real URL — a CS process tool you designed by hand on Monday, built with AI on Tuesday, refined on Wednesday, and shipped to the world on Friday.',
@@ -175,6 +190,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D01', program: 'ai-april', group: 'Week 1 — Apr 1–3 · 3-Day Kickoff', track: 'creative-storytelling', difficulty: 'beginner',
     day: 'WED', requirement: 'optional', emoji: '🦸', timeEstimate: 15,
+    tools: ['ChatGPT', 'Copilot'],
     title: 'AI Alter Ego',
     hook: 'Your professional bio, but make it superhero.',
     mission: 'Rewrite your professional bio as a superhero origin story — your superpower, your origin moment, and your nemesis. Have Copilot reformat it as a LinkedIn post.',
@@ -183,6 +199,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D02', program: 'ai-april', group: 'Week 1 — Apr 1–3 · 3-Day Kickoff', track: 'visual-creation', difficulty: 'beginner',
     day: 'THU', requirement: 'optional', emoji: '🎨', timeEstimate: 15,
+    tools: ['Copilot'],
     title: 'Triple Style Portrait',
     hook: 'Same you, three wildly different art styles.',
     mission: 'Generate yourself in 3 wildly different art styles using Copilot Designer: watercolour, cyberpunk neon, and Renaissance oil painting. Same description, only the style tag changes.',
@@ -191,6 +208,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D03', program: 'ai-april', group: 'Week 1 — Apr 1–3 · 3-Day Kickoff', track: 'presentation', difficulty: 'intermediate',
     day: 'FRI', requirement: 'mandatory', emoji: '📊', timeEstimate: 45,
+    tools: ['Copilot', 'ChatGPT'],
     title: 'AI Strategy Deck',
     hook: 'Friday flagship: the AI-in-our-team strategy deck.',
     mission: 'Build a 6-slide "AI in Our Team" strategy deck using Copilot in PowerPoint. Must include: Current State, AI Opportunity, 3 Recommended Tools with use cases, Implementation Roadmap, Risks & Mitigations, and Success Metrics. Use Copilot to write every slide, then add speaker notes.',
@@ -199,6 +217,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D04', program: 'ai-april', group: 'Week 2 — Apr 6–10 · First Full Week', track: 'content-generation', difficulty: 'beginner',
     day: 'MON', requirement: 'optional', emoji: '🎭', timeEstimate: 15,
+    tools: ['ChatGPT', 'Copilot', 'Claude'],
     title: 'Tone Tornado',
     hook: 'One late-email, five outrageous tones.',
     mission: 'Write one email saying you’ll be 5 minutes late. Have AI rewrite it in 5 very different tones: Shakespearean, passive-aggressive, Gen Z, corporate buzzword soup, and pirate.',
@@ -207,6 +226,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D05', program: 'ai-april', group: 'Week 2 — Apr 6–10 · First Full Week', track: 'visual-creation', difficulty: 'intermediate',
     day: 'TUE', requirement: 'optional', emoji: '🌌', timeEstimate: 20,
+    tools: ['Copilot'],
     title: 'Alternate Universe Office',
     hook: 'Your office, three alternate realities.',
     mission: 'Generate your workplace reimagined in 3 alternate realities using Copilot Designer: underwater research lab, medieval castle, and space station. Should feel like the same place — different universe.',
@@ -215,6 +235,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D06', program: 'ai-april', group: 'Week 2 — Apr 6–10 · First Full Week', track: 'creative-storytelling', difficulty: 'intermediate',
     day: 'WED', requirement: 'optional', emoji: '🎸', timeEstimate: 20,
+    tools: ['Gemini'],
     title: 'Mood Soundtrack',
     hook: 'Three work moods, three AI-generated tracks.',
     mission: 'Generate 3 music tracks for 3 work scenarios: deep focus session, Friday afternoon wind-down, and a high-pressure incident. One Gemini prompt each.',
@@ -223,6 +244,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D07', program: 'ai-april', group: 'Week 2 — Apr 6–10 · First Full Week', track: 'process-automation', difficulty: 'intermediate',
     day: 'THU', requirement: 'optional', emoji: '🔄', timeEstimate: 25,
+    tools: ['Claude'],
     title: 'Process Flow Animation',
     hook: 'Turn a 5-step process into an animated flowchart.',
     mission: 'Describe any 5-step work process to Claude. Ask it to build an animated HTML flowchart where each step reveals in sequence with smooth transitions. Must be click-through interactive.',
@@ -231,6 +253,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D08', program: 'ai-april', group: 'Week 2 — Apr 6–10 · First Full Week', track: 'application-building', difficulty: 'advanced',
     day: 'FRI', requirement: 'mandatory', emoji: '📈', timeEstimate: 60,
+    tools: ['Claude', 'ChatGPT'],
     title: 'Live Team Dashboard',
     hook: 'Friday flagship: a live team ops dashboard.',
     mission: 'Build a fully functional live team operations dashboard using Claude Artifacts. Must include: at least 4 chart types, animated metrics, status indicators, and a team progress tracker. Use ChatGPT to design the data story first, then Claude to build the live app.',
@@ -239,6 +262,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D09', program: 'ai-april', group: 'Week 3 — Apr 13–17 · Storytelling, Data & Multi-Tool', track: 'content-generation', difficulty: 'intermediate',
     day: 'MON', requirement: 'optional', emoji: '📢', timeEstimate: 20,
+    tools: ['ChatGPT', 'Copilot'],
     title: 'Content Multiplier',
     hook: 'One idea, five formats, one session.',
     mission: 'Take one real idea from your current project. Expand it into 5 formats in a single AI session: a tweet thread, a LinkedIn post, an internal email, a meeting talking point, and a one-pager headline.',
@@ -247,6 +271,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D10', program: 'ai-april', group: 'Week 3 — Apr 13–17 · Storytelling, Data & Multi-Tool', track: 'creative-storytelling', difficulty: 'intermediate',
     day: 'TUE', requirement: 'optional', emoji: '🌟', timeEstimate: 25,
+    tools: ['ChatGPT'],
     title: 'Your Origin Story',
     hook: 'Your career as a 4-panel graphic novel.',
     mission: 'Write your professional journey — how you got here — using ChatGPT. Illustrate it as a 4-panel graphic novel with DALL·E. Each panel must match a real scene from your story.',
@@ -255,6 +280,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D11', program: 'ai-april', group: 'Week 3 — Apr 13–17 · Storytelling, Data & Multi-Tool', track: 'creative-storytelling', difficulty: 'intermediate',
     day: 'WED', requirement: 'optional', emoji: '🎤', timeEstimate: 25,
+    tools: ['ChatGPT', 'Gemini'],
     title: 'AI Original Song',
     hook: 'Write the song. Generate the music. Submit both.',
     mission: 'Write full original lyrics about your job, team, or project with ChatGPT — pick a real genre, include verse, chorus, and bridge. Then use Gemini to generate the actual music.',
@@ -263,6 +289,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D12', program: 'ai-april', group: 'Week 3 — Apr 13–17 · Storytelling, Data & Multi-Tool', track: 'creative-storytelling', difficulty: 'intermediate',
     day: 'THU', requirement: 'optional', emoji: '📅', timeEstimate: 25,
+    tools: ['Claude'],
     title: 'Animated Project Timeline',
     hook: 'A project timeline that draws itself.',
     mission: 'Give Claude a real or fictional project with 6 milestones and dates. Ask it to build an animated horizontal timeline that draws itself left to right with milestone labels and status indicators.',
@@ -271,6 +298,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D13', program: 'ai-april', group: 'Week 3 — Apr 13–17 · Storytelling, Data & Multi-Tool', track: 'presentation', difficulty: 'advanced',
     day: 'FRI', requirement: 'mandatory', emoji: '🎬', timeEstimate: 60,
+    tools: ['Copilot', 'ChatGPT', 'Claude', 'Gemini'],
     title: 'AI-Powered Project Pitch',
     hook: 'Friday flagship: the four-format project pitch.',
     mission: 'Create a complete multi-format pitch for a real initiative from your work: (1) a polished 5-slide Copilot PPT deck, (2) a 60-second explainer video script with storyboard (ChatGPT), (3) an animated process workflow diagram (Claude), and (4) a Gemini-generated music track for the presentation.',
@@ -279,6 +307,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D14', program: 'ai-april', group: 'Week 4 — Apr 22–25 · Build Week', track: 'data-analysis', difficulty: 'intermediate',
     day: 'MON', requirement: 'optional', emoji: '📊', timeEstimate: 20,
+    tools: ['Copilot'],
     title: 'Chart from Chaos',
     hook: 'Raw data in, three charts and an insight out.',
     mission: 'Take any raw data from your work (or invent realistic data). Use Copilot in Excel to generate 3 different chart types.',
@@ -287,6 +316,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D15', program: 'ai-april', group: 'Week 4 — Apr 22–25 · Build Week', track: 'data-analysis', difficulty: 'intermediate',
     day: 'TUE', requirement: 'optional', emoji: '🔢', timeEstimate: 25,
+    tools: ['Copilot'],
     title: 'Formula Wizard',
     hook: 'Three formulas you genuinely need, written for you.',
     mission: 'Describe 3 Excel calculations you genuinely need at work. Use Copilot to write the formulas, explain them in plain English, and demonstrate them on sample data.',
@@ -295,6 +325,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D16', program: 'ai-april', group: 'Week 4 — Apr 22–25 · Build Week', track: 'application-building', difficulty: 'intermediate',
     day: 'WED', requirement: 'optional', emoji: '💬', timeEstimate: 30,
+    tools: ['ChatGPT', 'Claude'],
     title: 'Standup Bot',
     hook: 'A standup assistant that formats and copies for you.',
     mission: 'Build a daily standup assistant — asks the 3 standup questions one by one, collects answers, formats and copies a clean post to clipboard. Ready to paste straight into Slack or Teams.',
@@ -303,6 +334,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D17', program: 'ai-april', group: 'Week 4 — Apr 22–25 · Build Week', track: 'visual-creation', difficulty: 'intermediate',
     day: 'THU', requirement: 'optional', emoji: '📦', timeEstimate: 25,
+    tools: ['Copilot'],
     title: 'Product Concept Art',
     hook: 'Three plausible products that don’t exist — yet.',
     mission: 'Invent 3 products from your industry that don’t yet exist. Generate professional concept art for each with Copilot Designer. Must look plausible and launchable — not joke items.',
@@ -311,6 +343,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D18', program: 'ai-april', group: 'Week 4 — Apr 22–25 · Build Week', track: 'application-building', difficulty: 'advanced',
     day: 'FRI', requirement: 'mandatory', emoji: '🛠️', timeEstimate: 60,
+    tools: ['Vibe', 'ChatGPT'],
     title: 'Vibe Code a Real Work Tool',
     hook: 'Friday flagship: ship a real tool at a live URL.',
     mission: 'Build and ship a fully functional app that solves a real problem your team faces — using Lovable.dev, Base44, or Replit. Must be live at a shareable URL.',
@@ -319,6 +352,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D19', program: 'ai-april', group: 'Week 5 — Apr 27–30 · Final Week', track: 'content-generation', difficulty: 'intermediate',
     day: 'MON', requirement: 'optional', emoji: '📋', timeEstimate: 20,
+    tools: ['ChatGPT', 'Copilot'],
     title: 'Meeting Recap Machine',
     hook: 'Chaos notes in — summary, actions, email out.',
     mission: 'Paste your roughest, most chaotic meeting notes into ChatGPT or Copilot. Extract: a clean 5-line summary, 5 action items with owners, and a ready-to-send follow-up email — all from the same messy input.',
@@ -327,6 +361,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D20', program: 'ai-april', group: 'Week 5 — Apr 27–30 · Final Week', track: 'creative-storytelling', difficulty: 'intermediate',
     day: 'TUE', requirement: 'optional', emoji: '🔮', timeEstimate: 25,
+    tools: ['ChatGPT'],
     title: 'Industry Fable',
     hook: 'Your industry, five years out, as a fable.',
     mission: 'Write a short fable set in your industry 5 years from now. Characters: the innovator, the skeptic, the manager, the intern. Illustrate 2 key scenes and each character with DALL·E.',
@@ -335,6 +370,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D21', program: 'ai-april', group: 'Week 5 — Apr 27–30 · Final Week', track: 'application-building', difficulty: 'advanced',
     day: 'WED', requirement: 'optional', emoji: '📡', timeEstimate: 30,
+    tools: ['Claude', 'ChatGPT'],
     title: 'Live Ops Dashboard',
     hook: 'A dashboard that looks like a real monitoring screen.',
     mission: 'Ask Claude to build an animated operations dashboard — live-updating metrics, pulsing status indicators, filling progress bars. Must look like a real monitoring screen, not a static wireframe.',
@@ -343,6 +379,7 @@ const CUSTOM_ACTIVITIES = [
   {
     id: 'AA-D22', program: 'ai-april', group: 'Week 5 — Apr 27–30 · Final Week', track: 'application-building', difficulty: 'intermediate',
     day: 'THU', requirement: 'optional', emoji: '🌐', timeEstimate: 25,
+    tools: ['Claude'],
     title: 'Clickable Org Chart',
     hook: 'An org chart people can actually click.',
     mission: 'Describe your team structure to Claude. Ask it to build an animated org chart where clicking any person expands their role and responsibilities. Must be at least 3 levels deep.',
@@ -368,6 +405,7 @@ function customSetActivities() {
       description: a.hook,
       detailedInstructions: a.mission + (a.proTip ? ' Pro tip: ' + a.proTip : ''),
       deliverable: a.submission,
+      tools: (a.tools && a.tools.length) ? a.tools : ['any'],
       skillsBuilt: [],
       tags: [prog ? prog.label : a.program, a.group].filter(Boolean),
       fromProgram: a.program,
@@ -432,6 +470,16 @@ function renderCustomActivities() {
   `;
 }
 
+const _CU_TOOL_COLORS = {
+  chatgpt: 'emerald', copilot: 'sky', claude: 'amber', gemini: 'violet',
+  vibe: 'pink', github: 'plain', ace: 'violet', sidekick: 'violet'
+};
+function _cuToolChip(name) {
+  const key = name.toLowerCase().replace(/[^a-z]/g, '');
+  const color = _CU_TOOL_COLORS[key] || 'plain';
+  return `<span class="cu-tool cu-tool-${color}">${escapeHtml(name)}</span>`;
+}
+
 function customActivityCard(a) {
   const track = TRACKS.find(t => t.id === a.track);
   const def = a.requirement === 'mandatory'
@@ -446,12 +494,14 @@ function customActivityCard(a) {
             <span class="cu-day">${a.day}</span>
             ${def}
           </div>
-          <div class="cu-emoji">${a.emoji}</div>
-          <h3 class="cu-title">${escapeHtml(a.title)}</h3>
-          <p class="cu-hook">${escapeHtml(a.hook)}</p>
+          <div class="cu-title-row">
+            <span class="cu-emoji">${a.emoji}</span>
+            <h3 class="cu-title">${escapeHtml(a.title)}</h3>
+          </div>
+          <p class="cu-mission">${escapeHtml(a.mission)}</p>
+          ${a.tools && a.tools.length ? `<div class="cu-tools">${a.tools.map(_cuToolChip).join('')}</div>` : ''}
           <div class="cu-meta">
-            <span>${track ? track.icon + ' ' + track.name : ''}</span>
-            <span class="cu-meta-row"><span class="diff-pill diff-${a.difficulty}">★★★ ${a.difficulty}</span> · ${a.timeEstimate} min</span>
+            <span>${track ? track.icon + ' ' + track.name : ''} · <span class="diff-pill diff-${a.difficulty}">${a.difficulty === 'advanced' ? '★★★' : a.difficulty === 'intermediate' ? '★★' : '★'} ${a.difficulty}</span> · ${a.timeEstimate} min</span>
           </div>
           <span class="cu-flip-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg>
@@ -464,6 +514,7 @@ function customActivityCard(a) {
             <span class="cu-back-day">${a.day}</span>
           </div>
           <div class="cu-back-scroll">
+            <p class="cu-back-hook">${escapeHtml(a.hook)}</p>
             <div class="cu-sec"><h4>The mission</h4><p>${escapeHtml(a.mission)}</p></div>
             <div class="cu-sec"><h4>Your submission</h4><p>${escapeHtml(a.submission)}</p></div>
             ${a.proTip ? `<div class="cu-sec tip"><h4>💡 Pro tip</h4><p>${escapeHtml(a.proTip)}</p></div>` : ''}
@@ -501,7 +552,7 @@ function _customSetStaticHTML(progId) {
         <span class="emoji">${a.emoji}</span>
         <div class="titles">
           <h2>${esc(a.title)}</h2>
-          <div class="meta">${track ? track.icon + ' ' + esc(track.name) : ''} · ★★★ ${esc(a.difficulty)} · ${a.timeEstimate} min</div>
+          <div class="meta">${track ? track.icon + ' ' + esc(track.name) : ''} · ★★★ ${esc(a.difficulty)} · ${a.timeEstimate} min${a.tools && a.tools.length ? ' · Tools: ' + a.tools.map(esc).join(', ') : ''}</div>
         </div>
         ${def}
       </div>
