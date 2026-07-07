@@ -12,7 +12,8 @@ const state = {
   schedule: [],         // [{ activityId }]
   resources: [],        // catalogIds attached to this program
   filters: { track: 'all', difficulty: 'all' },
-  customActivities: []
+  customActivities: [],
+  programSets: {}        // progId -> true (program sets selected as tracks)
 };
 
 function allActivities() {
@@ -79,6 +80,7 @@ function saveState() {
         schedule: state.schedule,
         resources: state.resources,
         customActivities: state.customActivities,
+        programSets: state.programSets,
         step: state.step,
         loadedPlanId: state.loadedPlanId || null
       }));
@@ -96,6 +98,7 @@ function restoreState() {
     state.schedule = saved.schedule || [];
     state.resources = saved.resources || [];
     state.customActivities = saved.customActivities || [];
+    state.programSets = saved.programSets || {};
     state.loadedPlanId = saved.loadedPlanId || null;
     return state.schedule.length > 0 || !!state.program.name;
   } catch (_) { return false; }
@@ -107,6 +110,7 @@ function resetState() {
   state.schedule = [];
   state.resources = [];
   state.customActivities = [];
+  state.programSets = {};
   state.step = 1;
   state.loadedPlanId = null;
 }
@@ -325,6 +329,7 @@ function triggerLoadJSON() {
         state.schedule = s.schedule || [];
         state.resources = s.resources || [];
         state.customActivities = s.customActivities || [];
+        state.programSets = s.programSets || {};
         saveState();
         toast('Program loaded.');
         startBuilder();

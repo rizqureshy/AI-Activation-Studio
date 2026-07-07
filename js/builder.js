@@ -14,8 +14,8 @@ function canAdvanceTo(n) {
     toast('Add a program name and pick a format first.');
     return false;
   }
-  if (n >= 3 && selectedTracks().length === 0) {
-    toast('Pick at least one track.');
+  if (n >= 3 && selectedTracks().length === 0 && selectedProgramSets().length === 0) {
+    toast('Pick at least one track or program set.');
     return false;
   }
   if (n >= 4 && state.schedule.length === 0) {
@@ -27,6 +27,9 @@ function canAdvanceTo(n) {
 
 function selectedTracks() {
   return Object.keys(state.tracks).filter(id => state.tracks[id]?.selected);
+}
+function selectedProgramSets() {
+  return Object.keys(state.programSets || {}).filter(id => state.programSets[id]);
 }
 
 function renderStep() {
@@ -230,6 +233,27 @@ function renderStep2() {
       }).join('')}
     </div>
 
+    ${(typeof CUSTOM_PROGRAMS !== 'undefined' && CUSTOM_PROGRAMS.length) ? `
+    <h3 class="set-list-head">Program sets <span class="set-list-hint">— full activity sets from programs we've run; selecting one includes all its activities</span></h3>
+    <div class="track-list" id="set-list">
+      ${CUSTOM_PROGRAMS.map(prog => {
+        const items = (typeof CUSTOM_ACTIVITIES !== 'undefined') ? CUSTOM_ACTIVITIES.filter(a => a.program === prog.id) : [];
+        if (!items.length) return '';
+        const sel = state.programSets?.[prog.id];
+        const weeks = new Set(items.map(a => a.group)).size;
+        return `
+          <div class="track-row set-row ${sel ? 'selected' : ''}" data-set="${prog.id}">
+            <div class="track-check">${sel ? '✓' : ''}</div>
+            <div class="track-icon">${prog.icon}</div>
+            <div class="track-body">
+              <div class="track-name">${escapeHtml(prog.label)} <span class="prog-status ${prog.status}">${prog.status}</span></div>
+              <div class="track-desc">${weeks} weeks · ${items.length} activities · defaults seed the schedule, changeable per slot</div>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>` : ''}
+
     <div class="selection-bar" id="track-summary"></div>
 
     <div class="wizard-footer">
@@ -249,6 +273,14 @@ function renderStep2() {
       renderStep2();
     });
   });
+  document.querySelectorAll('#set-list .set-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const id = row.dataset.set;
+      if (!state.programSets) state.programSets = {};
+      state.programSets[id] = !state.programSets[id];
+      renderStep2();
+    });
+  });
   document.querySelectorAll('.track-difficulty').forEach(sel => {
     sel.addEventListener('change', e => {
       const id = e.target.dataset.id;
@@ -261,24 +293,36 @@ function renderStep2() {
 
 function updateTrackSummary() {
   const sel = selectedTracks();
+  const sets = selectedProgramSets();
   const available = filteredActivities();
   const el = document.getElementById('track-summary');
   if (!el) return;
+  const setPart = sets.length ? ` + ${sets.length} program set${sets.length===1?'':'s'}` : '';
   el.innerHTML = `
-    <span>${sel.length} track${sel.length===1?'':'s'} selected · ~${available.length} activities available</span>
+    <span>${sel.length} track${sel.length===1?'':'s'}${setPart} selected · ~${available.length} activities available</span>
     <span style="color:var(--text-muted)">Min 1 · select as many as you like</span>
   `;
 }
 
 function filteredActivities() {
   const sel = selectedTracks();
-  if (sel.length === 0) return [];
-  return allActivities().filter(a => {
-    if (!sel.includes(a.track)) return false;
-    const trackDiff = state.tracks[a.track]?.difficulty || 'mixed';
-    if (trackDiff !== 'mixed' && a.difficulty !== trackDiff) return false;
-    return true;
-  });
+  const setSel = selectedProgramSets();
+  if (sel.length === 0 && setSel.length === 0) return [];
+  const seen = new Set();
+  const out = [];
+  for (const a of allActivities()) {
+    let include = false;
+    // Selected program sets bring ALL their activities, regardless of
+    // capability-track selection or per-track difficulty.
+    if (a.fromProgram && setSel.includes(a.fromProgram)) {
+      include = true;
+    } else if (sel.includes(a.track)) {
+      const trackDiff = state.tracks[a.track]?.difficulty || 'mixed';
+      include = trackDiff === 'mixed' || a.difficulty === trackDiff;
+    }
+    if (include && !seen.has(a.id)) { seen.add(a.id); out.push(a); }
+  }
+  return out;
 }
 
 function applyRecommendedTracks() {

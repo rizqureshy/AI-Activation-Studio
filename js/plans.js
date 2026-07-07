@@ -66,6 +66,7 @@ function savePlan(name, opts) {
     savedAt: new Date().toISOString(),
     program: { ...state.program },
     tracks: JSON.parse(JSON.stringify(state.tracks || {})),
+    programSets: JSON.parse(JSON.stringify(state.programSets || {})),
     schedule: (state.schedule || []).map(s => ({
       activityId: s.activityId,
       required: s.required === 'mandatory' ? 'mandatory' : 'optional'
@@ -93,6 +94,7 @@ function loadPlanIntoState(id) {
   resetState();
   Object.assign(state.program, p.program || {});
   state.tracks = p.tracks || {};
+  state.programSets = p.programSets || {};
   state.schedule = (p.schedule || []).map(s => ({
     activityId: s.activityId,
     required: s.required === 'mandatory' ? 'mandatory' : 'optional'
